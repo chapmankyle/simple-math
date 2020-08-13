@@ -27,6 +27,13 @@ namespace smath {
 	}
 
 	/**
+	 * @returns The absolute value of the given type.
+	 */
+	template<class T> constexpr const T& abs(const T& a) {
+		return a >= 0 ? a : -a;
+	}
+
+	/**
 	 * @brief Performs the square root of a floating-point number, using the
 	 * fast, inverse square root method.
 	 *
