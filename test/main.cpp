@@ -90,6 +90,22 @@ void test_sqrt() {
 }
 
 /**
+ * Test the smath::round function compared to std::round
+ */
+void test_round() {
+	std::cout << "-------- ROUND --------\n";
+	std::cout << smath::round(7.2f) << '\n';
+	std::cout << std::round(7.2f) << '\n';
+
+	std::cout << smath::round(7.6) << '\n';
+	std::cout << std::round(7.6) << '\n';
+
+	std::cout << smath::round(2) << '\n';
+	std::cout << std::round(2) << '\n';
+	std::cout << '\n';
+}
+
+/**
  * Test the differences between the constants
  */
 void test_consts() {
@@ -111,6 +127,8 @@ int main() {
 	test_min();
 	test_abs();
 	test_sqrt();
+	test_round();
+
 	test_consts();
 
 	return 0;
