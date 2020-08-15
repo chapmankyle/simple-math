@@ -52,7 +52,7 @@ namespace smath {
 	 */
 	template<class T>
 	constexpr const T abs(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'abs' only accepts integers or floating-point inputs");
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'abs' only accepts integer or floating-point inputs");
 		return (a >= 0) ? a : -a;
 	}
 
@@ -62,7 +62,7 @@ namespace smath {
 	 */
 	template<class T>
 	constexpr int round(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round' only accepts integers or floating-point inputs");
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round' only accepts integer or floating-point inputs");
 		return static_cast<int>(a + 0.5);
 	}
 
@@ -74,7 +74,7 @@ namespace smath {
 	 */
 	template<class T>
 	constexpr int round_nearest(const T &a, const int &nearest) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round_nearest' only accepts integers or floating-point inputs");
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round_nearest' only accept integers or floating-point inputs");
 		return static_cast<int>(smath::round(static_cast<double>(a) / nearest) * nearest);
 	}
 
@@ -85,7 +85,7 @@ namespace smath {
 	 */
 	template<class T>
 	constexpr int floor(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'floor' only accepts integers or floating-point inputs");
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'floor' only accepts integer or floating-point inputs");
 		if (smath::is_integer_type<T>::value) {
 			return a;
 		}
@@ -99,11 +99,30 @@ namespace smath {
 	 */
 	template<class T>
 	constexpr int ceil(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'ceil' only accepts integers or floating-point inputs");
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'ceil' only accepts integer or floating-point inputs");
 		if (smath::is_integer_type<T>::value) {
 			return a;
 		}
 		return static_cast<int>((a > 0) ? a + 1 : a);
+	}
+
+	/**
+	 * @brief Scales the input value `x` from range [a, b] to range [c, d].
+	 * Credit to https://stats.stackexchange.com/a/281165.
+	 * @param x The input value to scale.
+	 * @param a The minimum of the original range.
+	 * @param b The maximum of the original range.
+	 * @param c The new minimum of the range to scale to.
+	 * @param d The new maximum of the range to scale to.
+	 * @returns A scaled value.
+	 */
+	template<class T>
+	constexpr T scale(const T &x, const T &a, const T &b, const T &c, const T &d) {
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'scale' only accepts integer or floating-point inputs");
+		if (smath::is_integer_type<T>::value) {
+			return smath::round((d - c) * ((x - a) / static_cast<float>(b - a)) + c);
+		}
+		return (d - c) * ((x - a) / (b - a)) + c;
 	}
 
 } // namespace smath
