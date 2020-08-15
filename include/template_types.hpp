@@ -7,7 +7,7 @@ namespace smath {
 
 	/**
 	 * Used to check for integer types.
-	 * @tparam Type to check if integer.
+	 * @tparam T Type to check if integer.
 	 */
 	template <class T>
 	struct is_integer_type { };
@@ -34,7 +34,7 @@ namespace smath {
 
 	/**
 	 * Used to check for floating-point types.
-	 * @tparam Type to check if floating-point.
+	 * @tparam T Type to check if floating-point.
 	 */
 	template <class T>
 	struct is_floating_type { };
