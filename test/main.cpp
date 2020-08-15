@@ -128,6 +128,7 @@ void test_floor() {
 	std::cout << smath::floor(3) << '\n';
 	std::cout << std::floor(3) << '\n';
 	std::cout << '\n';
+	std::log(3);
 }
 
 /**
@@ -149,6 +150,32 @@ void test_ceil() {
 
 	std::cout << smath::ceil(3) << '\n';
 	std::cout << std::ceil(3) << '\n';
+	std::cout << '\n';
+}
+
+/**
+ * Test the conversion between degrees and radians
+ */
+void test_convert_radians_degrees() {
+	std::cout << "-------- CONVERTING --------\n";
+	std::cout << smath::to_radians(180.0f) << '\n';
+	std::cout << smath::to_radians(90.0f) << '\n';
+	std::cout << smath::to_radians(45.0f) << '\n';
+	std::cout << smath::to_radians(1.0f) << '\n';
+
+	std::cout << smath::to_degrees(3.1416f) << '\n';
+	std::cout << smath::to_degrees(1.573f) << '\n';
+	std::cout << '\n';
+}
+
+/**
+ * Test the scaling of a number to a new range
+ */
+void test_scale() {
+	std::cout << "-------- SCALE --------\n";
+	std::cout << smath::scale(3, 1, 10, 1, 100) << '\n';
+	std::cout << smath::scale(27, 11, 40, 1, 100) << '\n';
+	std::cout << smath::scale(1.0f, 0.1f, 4.0f, 1.0f, 100.0f) << '\n';
 	std::cout << '\n';
 }
 
@@ -177,6 +204,8 @@ int main() {
 	test_round();
 	test_floor();
 	test_ceil();
+	test_convert_radians_degrees();
+	test_scale();
 	test_consts();
 
 	return 0;
