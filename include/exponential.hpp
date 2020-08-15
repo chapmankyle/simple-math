@@ -4,6 +4,7 @@
 #define EXPONENTIAL_H
 
 #include <cstdint>
+#include "constants.hpp"
 
 namespace smath {
 
@@ -57,6 +58,9 @@ namespace smath {
 	 * 7 digits of precision.
 	 */
 	inline constexpr float sqrt(const float &a) {
+		if (a == 2.0f) {
+			return static_cast<float>(smath::SQRT2);
+		}
 		return 1.0f / inv_sqrt(a);
 	}
 
@@ -68,6 +72,9 @@ namespace smath {
 	 * 15 digits of precision.
 	 */
 	inline constexpr double sqrt(const double &a) {
+		if (a == 2.0) {
+			return static_cast<double>(smath::SQRT2);
+		}
 		return 1.0 / inv_sqrt(a);
 	}
 
