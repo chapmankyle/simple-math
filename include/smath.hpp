@@ -7,5 +7,6 @@
 #include "exponential.hpp"
 #include "math.hpp"
 #include "template_types.hpp"
+#include "trigonometry.hpp"
 
 #endif
