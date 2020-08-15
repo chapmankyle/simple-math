@@ -48,6 +48,14 @@ namespace smath {
 		return a >= 0 ? a : -a;
 	}
 
+	/**
+	 * @brief Rounds a number to the nearest integer.
+	 * @returns An integer that is closest to the given input number.
+	 */
+	template<class T> constexpr int round(const T &a) {
+		return static_cast<int>(a + 0.5);
+	}
+
 } // namespace smath
 
 #endif // MATH_H
