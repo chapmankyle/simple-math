@@ -1,5 +1,9 @@
 #include <iostream>
-#include "include/math.hpp"
+#include <cmath>
+#include <iomanip>
+#include <typeinfo>
+
+#include "include/smath.hpp"
 
 int main() {
 
@@ -8,9 +12,23 @@ int main() {
 	std::cout << smath::max('a', 'z') << '\n';
 	std::cout << smath::max('A', 'Z') << '\n';
 	std::cout << smath::max('A', 'z') << '\n';
+	std::cout << '\n';
 
+	std::cout << std::setprecision(16);
+	std::cout << smath::sqrt(4.0f) << '\n';
+	std::cout << std::sqrt(4.0f) << '\n';
 	std::cout << smath::sqrt(4.0) << '\n';
+	std::cout << std::sqrt(4.0) << '\n';
+	std::cout << '\n';
+
+	std::cout << smath::sqrt(16.0f) << '\n';
+	std::cout << std::sqrt(16.0f) << '\n';
 	std::cout << smath::sqrt(16.0) << '\n';
+	std::cout << std::sqrt(16.0) << '\n';
+	std::cout << '\n';
+
+	std::cout << M_PI << '\n';
+	std::cout << smath::PI << '\n';
 
 	return 0;
 }
