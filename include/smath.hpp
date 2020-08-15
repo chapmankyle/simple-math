@@ -4,7 +4,8 @@
 #define SMATH_H
 
 #include "constants.hpp"
-#include "math.hpp"
 #include "exponential.hpp"
+#include "math.hpp"
+#include "template_types.hpp"
 
 #endif
