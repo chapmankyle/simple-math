@@ -4,7 +4,9 @@
 #define EXPONENTIAL_H
 
 #include <cstdint>
+
 #include "constants.hpp"
+#include "template_types.hpp"
 
 namespace smath {
 
@@ -53,29 +55,15 @@ namespace smath {
 	/**
 	 * @brief Performs the square root of a floating-point number, using the
 	 * fast, inverse square root method.
-	 *
-	 * @returns The square root of the provided floating-point number, up to
-	 * 7 digits of precision.
+	 * @returns The square root of the floating-point input number.
 	 */
-	inline constexpr float sqrt(const float &a) {
-		if (a == 2.0f) {
-			return static_cast<float>(smath::SQRT2);
+	template<class T>
+	constexpr const T sqrt(const T &a) {
+		static_assert(smath::is_floating_type<T>::value, "'sqrt' only accepts floating-point inputs");
+		if (a == static_cast<T>(2.0)) {
+			return static_cast<T>(smath::SQRT2);
 		}
-		return 1.0f / inv_sqrt(a);
-	}
-
-	/**
-	 * @brief Performs the square root of a floating-point number, using the
-	 * fast, inverse square root method.
-	 *
-	 * @returns The square root of the provided floating-point number, up to
-	 * 15 digits of precision.
-	 */
-	inline constexpr double sqrt(const double &a) {
-		if (a == 2.0) {
-			return static_cast<double>(smath::SQRT2);
-		}
-		return 1.0 / inv_sqrt(a);
+		return static_cast<T>(1.0) / inv_sqrt(a);
 	}
 
 } // namespace smath
