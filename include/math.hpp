@@ -1,60 +1,130 @@
 #pragma once
-#ifndef INCLUDE_MATH_H
 
-#include <cstdint>
+#ifndef MATH_H
+#define MATH_H
+
+#include "template_types.hpp"
 
 namespace smath {
-
-	// math constants
-
-	inline constexpr double e{ 2.7182818284590452354 };
-	inline constexpr double pi{ 3.1415926535897932385 };
 
 	/**
 	 * @brief Calculates the maximum between two types, comparable by operator<
 	 * @returns The larger of the two provided types.
 	 */
-	template<class T> constexpr const T& max(const T &a, const T &b) {
+	template<class T>
+	constexpr const T& max(const T &a, const T &b) {
 		return (a < b) ? b : a;
+	}
+
+	/**
+	 * @brief Calculates the maximum between three types, comparable by operator<
+	 * @returns The larger of the three provided types.
+	 */
+	template<class T>
+	constexpr const T max(const T &a, const T &b, const T &c) {
+		return smath::max(a, smath::max(b, c));
 	}
 
 	/**
 	 * @brief Calculates the minimum between two types, comparable by operator<
 	 * @returns The smaller of the two provided types.
 	 */
-	template<class T> constexpr const T& min(const T &a, const T &b) {
+	template<class T>
+	constexpr const T& min(const T &a, const T &b) {
 		return (a < b) ? a : b;
 	}
 
 	/**
-	 * @returns The absolute value of the given type.
+	 * @brief Calculates the minimum between three types, comparable by operator<
+	 * @returns The smaller of the three provided types.
 	 */
-	template<class T> constexpr const T& abs(const T& a) {
-		return a >= 0 ? a : -a;
+	template<class T>
+	constexpr const T min(const T &a, const T &b, const T &c) {
+		return smath::min(a, smath::min(b, c));
 	}
 
 	/**
-	 * @brief Performs the square root of a floating-point number, using the
-	 * fast, inverse square root method.
+	 * @brief Calculates the absolute value of the given type.
 	 *
-	 * Credit to https://cs.uwaterloo.ca/~m32rober/rsqrt.pdf
+	 * `abs(x) = x if x >=0, or -x if x < 0`
 	 *
-	 * @returns The square root of the provided floating-point number.
+	 * @returns The absolute value of the given type.
 	 */
-	inline constexpr double sqrt(const double &a) {
-		constexpr double threehalfs{ 1.5 };
+	template<class T>
+	constexpr const T abs(const T &a) {
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'abs' only accepts integer or floating-point inputs");
+		return (a >= 0) ? a : -a;
+	}
 
-		double y{ a };
-		double x{ y * 0.5 };
+	/**
+	 * @brief Rounds a number to the nearest integer.
+	 * @returns An integer that is closest to the given input number.
+	 */
+	template<class T>
+	constexpr int round(const T &a) {
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round' only accepts integer or floating-point inputs");
+		return static_cast<int>(a + 0.5);
+	}
 
-		std::uint_fast64_t i = *(std::uint_fast64_t *) &y;
-		i = 0x5fe6eb50c7b537a9 - (i >> 1);
-		y = *(double *) &i;
-		y = y * (threehalfs - (x * y * y));
-		y = y * (threehalfs - (x * y * y));
-		return 1.0 / y;
+	/**
+	 * @brief Rounds a number to the nearest multiple of the `nearest` input parameter.
+	 * @param a The number to round.
+	 * @param nearest The number to round up or down to.
+	 * @returns The input rounded to the nearest multiple of the input parameter.
+	 */
+	template<class T>
+	constexpr int round_nearest(const T &a, const int &nearest) {
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round_nearest' only accept integers or floating-point inputs");
+		return static_cast<int>(smath::round(static_cast<double>(a) / nearest) * nearest);
+	}
+
+	/**
+	 * @brief Rounds the input number downwards, effectively removing the decimal
+	 * point if it exists.
+	 * @returns An integer that has been rounded down.
+	 */
+	template<class T>
+	constexpr int floor(const T &a) {
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'floor' only accepts integer or floating-point inputs");
+		if (smath::is_integer_type<T>::value) {
+			return a;
+		}
+		return static_cast<int>((a > 0) ? a : a - 1);
+	}
+
+	/**
+	 * @brief Rounds the input number upwards.
+	 * @returns An integer that has been rounded upwards, regardless of decimal
+	 * point, if a decimal point exists.
+	 */
+	template<class T>
+	constexpr int ceil(const T &a) {
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'ceil' only accepts integer or floating-point inputs");
+		if (smath::is_integer_type<T>::value) {
+			return a;
+		}
+		return static_cast<int>((a > 0) ? a + 1 : a);
+	}
+
+	/**
+	 * @brief Scales the input value `x` from range [a, b] to range [c, d].
+	 * Credit to https://stats.stackexchange.com/a/281165.
+	 * @param x The input value to scale.
+	 * @param a The minimum of the original range.
+	 * @param b The maximum of the original range.
+	 * @param c The new minimum of the range to scale to.
+	 * @param d The new maximum of the range to scale to.
+	 * @returns A scaled value.
+	 */
+	template<class T>
+	constexpr T scale(const T &x, const T &a, const T &b, const T &c, const T &d) {
+		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'scale' only accepts integer or floating-point inputs");
+		if (smath::is_integer_type<T>::value) {
+			return smath::round((d - c) * ((x - a) / static_cast<float>(b - a)) + c);
+		}
+		return (d - c) * ((x - a) / (b - a)) + c;
 	}
 
 } // namespace smath
 
-#endif // INCLUDE_MATH_H
+#endif // MATH_H
