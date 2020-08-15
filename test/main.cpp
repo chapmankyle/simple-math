@@ -6,7 +6,7 @@
 #include "include/smath.hpp"
 
 /**
- * Test the smath::max function compared to std::max
+ * Test the smath::max function against std::max
  */
 void test_max() {
 	std::cout << "-------- MAX --------\n";
@@ -29,7 +29,7 @@ void test_max() {
 }
 
 /**
- * Test the smath::min function compared to std::min
+ * Test the smath::min function against std::min
  */
 void test_min() {
 	std::cout << "-------- MIN --------\n";
@@ -51,7 +51,7 @@ void test_min() {
 }
 
 /**
- * Test the smath::abs function compared to std::abs
+ * Test the smath::abs function against std::abs
  */
 void test_abs() {
 	std::cout << "-------- ABS --------\n";
@@ -64,7 +64,7 @@ void test_abs() {
 }
 
 /**
- * Test the smath::sqrt function compared to std::sqrt
+ * Test the smath::sqrt function against std::sqrt
  */
 void test_sqrt() {
 	std::cout << "-------- SQRT --------\n";
@@ -90,7 +90,7 @@ void test_sqrt() {
 }
 
 /**
- * Test the smath::round function compared to std::round
+ * Test the smath::round function against std::round
  */
 void test_round() {
 	std::cout << "-------- ROUND --------\n";
@@ -102,6 +102,53 @@ void test_round() {
 
 	std::cout << smath::round(2) << '\n';
 	std::cout << std::round(2) << '\n';
+
+	std::cout << smath::round_nearest(38, 10) << '\n';
+	std::cout << smath::round_nearest(12.5, 5) << '\n';
+	std::cout << '\n';
+}
+
+/**
+ * Test the smath::floor function against std::floor
+ */
+void test_floor() {
+	std::cout << "-------- FLOOR --------\n";
+	std::cout << smath::floor(0) << '\n';
+	std::cout << std::floor(0) << '\n';
+
+	std::cout << smath::floor(-1.2) << '\n';
+	std::cout << std::floor(-1.2) << '\n';
+
+	std::cout << smath::floor(1.2) << '\n';
+	std::cout << std::floor(1.2) << '\n';
+
+	std::cout << smath::floor(2.7) << '\n';
+	std::cout << std::floor(2.7) << '\n';
+
+	std::cout << smath::floor(3) << '\n';
+	std::cout << std::floor(3) << '\n';
+	std::cout << '\n';
+}
+
+/**
+ * Test the smath::ceil function against std::ceil
+ */
+void test_ceil() {
+	std::cout << "-------- CEIL --------\n";
+	std::cout << smath::ceil(0) << '\n';
+	std::cout << std::ceil(0) << '\n';
+
+	std::cout << smath::ceil(-1.2) << '\n';
+	std::cout << std::ceil(-1.2) << '\n';
+
+	std::cout << smath::ceil(1.2) << '\n';
+	std::cout << std::ceil(1.2) << '\n';
+
+	std::cout << smath::ceil(2.7) << '\n';
+	std::cout << std::ceil(2.7) << '\n';
+
+	std::cout << smath::ceil(3) << '\n';
+	std::cout << std::ceil(3) << '\n';
 	std::cout << '\n';
 }
 
@@ -128,7 +175,8 @@ int main() {
 	test_abs();
 	test_sqrt();
 	test_round();
-
+	test_floor();
+	test_ceil();
 	test_consts();
 
 	return 0;
