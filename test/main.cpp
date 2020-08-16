@@ -86,7 +86,7 @@ void test_sqrt() {
 	std::cout << std::sqrt(16.0f) << '\n';
 	std::cout << smath::sqrt(16.0) << '\n';
 	std::cout << std::sqrt(16.0) << '\n';
-	std::cout << '\n';
+	std::cout << std::setprecision(4) << '\n';
 }
 
 /**
@@ -180,6 +180,26 @@ void test_scale() {
 }
 
 /**
+ * Test my implementation of vectors.
+ */
+void test_vec2() {
+	std::cout << "-------- VECTOR 2 --------\n";
+	smath::vec2 zero{};
+	smath::vec2 A{ 4.2f, 0.05f };
+	smath::vec2 B{ 8.9f, 1.1f };
+
+	smath::vec2 addAB{ B };
+	addAB += A;
+
+	std::cout << A.length() << '\n';
+	std::cout << A[0] << '\n';
+
+	std::cout << B[0] << '\n';
+	std::cout << "(" << addAB[0] << ", " << addAB[1] << ")\n";
+	std::cout << '\n';
+}
+
+/**
  * Test the differences between the constants
  */
 void test_consts() {
@@ -206,6 +226,7 @@ int main() {
 	test_ceil();
 	test_convert_radians_degrees();
 	test_scale();
+	test_vec2();
 	test_consts();
 
 	return 0;
