@@ -183,19 +183,24 @@ void test_scale() {
  * Test my implementation of vectors.
  */
 void test_vec2() {
-	std::cout << "-------- VECTOR 2 --------\n";
-	smath::vec2 zero{};
+	std::cout << "-------- VECTOR 2f --------\n";
 	smath::vec2 A{ 4.2f, 0.05f };
 	smath::vec2 B{ 8.9f, 1.1f };
 
-	smath::vec2 addAB{ B };
-	addAB += A;
+	smath::vec2 C{ B };
+	C += A;
 
 	std::cout << A.length() << '\n';
 	std::cout << A[0] << '\n';
 
 	std::cout << B[0] << '\n';
-	std::cout << "(" << addAB[0] << ", " << addAB[1] << ")\n";
+	std::cout << '(' << C[0] << ", " << C[1] << ")\n";
+
+	smath::vec2 D{ B * C };
+	std::cout << '(' << D.x << ", " << D.y << ")\n";
+
+	smath::vec2 E{ 1.0f / B };
+	std::cout << '(' << E.x << ", " << E.y << ")\n";
 	std::cout << '\n';
 }
 
