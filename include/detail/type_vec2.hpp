@@ -179,6 +179,63 @@ namespace smath {
 	template<class T>
 	constexpr vec<2, T> operator/(const vec<2, T> &v1, const vec<2, T> &v2);
 
+	template<class T>
+	constexpr vec<2, T> operator%(const vec<2, T> &v, T scalar);
+	template<class T>
+	constexpr vec<2, T> operator%(T scalar, const vec<2, T> &v);
+	template<class T>
+	constexpr vec<2, T> operator%(const vec<2, T> &v1, const vec<2, T> &v2);
+
+	// -- Bitwise arithmetic operators --
+
+	template<class T>
+	constexpr vec<2, T> operator&(const vec<2, T> &v, T scalar);
+	template<class T>
+	constexpr vec<2, T> operator&(T scalar, const vec<2, T> &v);
+	template<class T>
+	constexpr vec<2, T> operator&(const vec<2, T> &v1, const vec<2, T> &v2);
+
+	template<class T>
+	constexpr vec<2, T> operator|(const vec<2, T> &v, T scalar);
+	template<class T>
+	constexpr vec<2, T> operator|(T scalar, const vec<2, T> &v);
+	template<class T>
+	constexpr vec<2, T> operator|(const vec<2, T> &v1, const vec<2, T> &v2);
+
+	template<class T>
+	constexpr vec<2, T> operator^(const vec<2, T> &v, T scalar);
+	template<class T>
+	constexpr vec<2, T> operator^(T scalar, const vec<2, T> &v);
+	template<class T>
+	constexpr vec<2, T> operator^(const vec<2, T> &v1, const vec<2, T> &v2);
+
+	template<class T>
+	constexpr vec<2, T> operator<<(const vec<2, T> &v, T scalar);
+	template<class T>
+	constexpr vec<2, T> operator<<(T scalar, const vec<2, T> &v);
+	template<class T>
+	constexpr vec<2, T> operator<<(const vec<2, T> &v1, const vec<2, T> &v2);
+
+	template<class T>
+	constexpr vec<2, T> operator>>(const vec<2, T> &v, T scalar);
+	template<class T>
+	constexpr vec<2, T> operator>>(T scalar, const vec<2, T> &v);
+	template<class T>
+	constexpr vec<2, T> operator>>(const vec<2, T> &v1, const vec<2, T> &v2);
+
+	template<class T>
+	constexpr vec<2, T> operator~(const vec<2, T> &v);
+
+	// -- Boolean operators --
+
+	template<class T>
+	constexpr bool operator==(const vec<2, T> &v1, const vec<2, T> &v2);
+	template<class T>
+	constexpr bool operator!=(const vec<2, T> &v1, const vec<2, T> &v2);
+
+	constexpr vec<2, bool> operator&&(const vec<2, bool> &v1, const vec<2, bool> &v2);
+	constexpr vec<2, bool> operator||(const vec<2, bool> &v1, const vec<2, bool> &v2);
+
 } // namespace smath
 
 #include "type_vec2.inl"

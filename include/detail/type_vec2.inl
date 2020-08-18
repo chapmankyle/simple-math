@@ -380,4 +380,182 @@ namespace smath {
 		);
 	}
 
+	template<class T>
+	constexpr vec<2, T> operator%(const vec<2, T> &v, T scalar) {
+		return vec<2, T>(
+			v.x % scalar,
+			v.y % scalar
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator%(T scalar, const vec<2, T> &v) {
+		return vec<2, T>(
+			scalar % v.x,
+			scalar % v.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator%(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return vec<2, T>(
+			v1.x % v2.x,
+			v1.y % v2.y
+		);
+	}
+
+	// -- Bitwise arithmetic operators --
+
+	template<class T>
+	constexpr vec<2, T> operator&(const vec<2, T> &v, T scalar) {
+		return vec<2, T>(
+			v.x & scalar,
+			v.y & scalar
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator&(T scalar, const vec<2, T> &v) {
+		return vec<2, T>(
+			scalar & v.x,
+			scalar & v.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator&(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return vec<2, T>(
+			v1.x & v2.x,
+			v1.y & v2.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator|(const vec<2, T> &v, T scalar) {
+		return vec<2, T>(
+			v.x | scalar,
+			v.y | scalar
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator|(T scalar, const vec<2, T> &v) {
+		return vec<2, T>(
+			scalar | v.x,
+			scalar | v.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator|(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return vec<2, T>(
+			v1.x | v2.x,
+			v1.y | v2.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator^(const vec<2, T> &v, T scalar) {
+		return vec<2, T>(
+			v.x ^ scalar,
+			v.y ^ scalar
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator^(T scalar, const vec<2, T> &v) {
+		return vec<2, T>(
+			scalar ^ v.x,
+			scalar ^ v.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator^(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return vec<2, T>(
+			v1.x ^ v2.x,
+			v1.y ^ v2.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator<<(const vec<2, T> &v, T scalar) {
+		return vec<2, T>(
+			v.x << scalar,
+			v.y << scalar
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator<<(T scalar, const vec<2, T> &v) {
+		return vec<2, T>(
+			scalar << v.x,
+			scalar << v.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator<<(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return vec<2, T>(
+			v1.x << v2.x,
+			v1.y << v2.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator>>(const vec<2, T> &v, T scalar) {
+		return vec<2, T>(
+			v.x >> scalar,
+			v.y >> scalar
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator>>(T scalar, const vec<2, T> &v) {
+		return vec<2, T>(
+			scalar >> v.x,
+			scalar >> v.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator>>(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return vec<2, T>(
+			v1.x >> v2.x,
+			v1.y >> v2.y
+		);
+	}
+
+	template<class T>
+	constexpr vec<2, T> operator~(const vec<2, T> &v) {
+		return vec<2, T>(
+			~v.x,
+			~v.y
+		);
+	}
+
+	template<class T>
+	constexpr bool operator==(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return v1.x == v2.x && v1.y == v2.y;
+	}
+
+	template<class T>
+	constexpr bool operator!=(const vec<2, T> &v1, const vec<2, T> &v2) {
+		return !(v1 == v2);
+	}
+
+	constexpr vec<2, bool> operator&&(const vec<2, bool> &v1, const vec<2, bool> &v2) {
+		return vec<2, bool>(
+			v1.x && v2.x,
+			v1.y && v2.y
+		);
+	}
+
+	constexpr vec<2, bool> operator||(const vec<2, bool> &v1, const vec<2, bool> &v2) {
+		return vec<2, bool>(
+			v1.x || v2.x,
+			v1.y || v2.y
+		);
+	}
+
 } // namespace smath
