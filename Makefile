@@ -2,7 +2,7 @@
 
 COMPILER ?= $(GCC_PATH)g++
 
-FLAGS ?= -std=c++17 -Wall -Weffc++ -Wextra -Wsign-conversion -pedantic-errors
+FLAGS ?= -std=c++17 -Wall -Wextra -Wsign-conversion -pedantic-errors
 INCLUDE_DIRS = -I.
 
 LDFLAGS ?= -g
@@ -22,4 +22,4 @@ bin/%.o: test/%.cpp
 
 clean:
 	rm -f bin/*.o
-	rm ${EXECUTABLE} 
+	rm ${EXECUTABLE}
