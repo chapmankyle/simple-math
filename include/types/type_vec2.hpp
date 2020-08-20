@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef DETAIL_TYPE_VEC2_H
-#define DETAIL_TYPE_VEC2_H
+#ifndef TYPE_VEC2_H
+#define TYPE_VEC2_H
 
 #include "qualifier.hpp"
 
@@ -18,7 +18,7 @@ namespace smath {
 		/**
 		 * @returns The number of components that the vector contains.
 		 */
-		static constexpr int length() {
+		static constexpr int size() {
 			return 2;
 		}
 

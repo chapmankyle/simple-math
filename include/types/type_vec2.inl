@@ -44,7 +44,7 @@ namespace smath {
 
 	template<class T>
 	constexpr T& vec<2, T>::operator[](int i) {
-		assert(i >= 0 && i < this->length());
+		assert(i >= 0 && i < this->size());
 		switch(i) {
 			default:
 			case 0:
@@ -56,7 +56,7 @@ namespace smath {
 
 	template<class T>
 	constexpr const T& vec<2, T>::operator[](int i) const {
-		assert(i >= 0 && i < this->length());
+		assert(i >= 0 && i < this->size());
 		switch(i) {
 			default:
 			case 0:

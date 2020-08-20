@@ -180,7 +180,7 @@ void test_scale() {
 }
 
 /**
- * Test my implementation of vectors.
+ * Test my implementation of 2-component vectors.
  */
 void test_vec2() {
 	std::cout << "-------- VECTOR 2f --------\n";
@@ -190,7 +190,7 @@ void test_vec2() {
 	smath::vec2 C{ B };
 	C += A;
 
-	std::cout << A.length() << '\n';
+	std::cout << A.size() << '\n';
 	std::cout << A[0] << '\n';
 
 	std::cout << B[0] << '\n';
@@ -201,6 +201,31 @@ void test_vec2() {
 
 	smath::vec2 E{ 1.0f / B };
 	std::cout << '(' << E.x << ", " << E.y << ")\n";
+	std::cout << '\n';
+}
+
+/**
+ * Test my implementation of 3-component vectors.
+ */
+void test_vec3() {
+	std::cout << "-------- VECTOR 3f --------\n";
+	smath::vec3 A{ 4.2f, 0.05f, 8.12f };
+	smath::vec3 B{ 8.9f, 1.1f, 3.14f };
+
+	smath::vec3 C{ B };
+	C += A;
+
+	std::cout << A.size() << '\n';
+	std::cout << A[0] << '\n';
+
+	std::cout << B[0] << '\n';
+	std::cout << '(' << C[0] << ", " << C[1] << ", " << C[2] << ")\n";
+
+	smath::vec3 D{ B * C };
+	std::cout << '(' << D.x << ", " << D.y << ", " << D.z << ")\n";
+
+	smath::vec3 E{ 1.0f / B };
+	std::cout << '(' << E.x << ", " << E.y << ", " << E.z << ")\n";
 	std::cout << '\n';
 }
 
@@ -232,6 +257,7 @@ int main() {
 	test_convert_radians_degrees();
 	test_scale();
 	test_vec2();
+	test_vec3();
 	test_consts();
 
 	return 0;
