@@ -8,6 +8,8 @@
 #include "math.hpp"
 #include "template_types.hpp"
 #include "trigonometry.hpp"
+
 #include "vec2.hpp"
+#include "vec3.hpp"
 
 #endif
