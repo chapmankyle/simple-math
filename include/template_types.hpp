@@ -59,6 +59,14 @@ namespace smath {
 		static const bool value = false;
 	};
 
+	/**
+	 * Used to check if a vector has a valid length.
+	 * @param L The length of the vector.
+	 */
+	inline constexpr bool is_valid_vector(int L) {
+		return L >= 1 && L <= 4;
+	}
+
 } // namespace smath
 
 #endif
