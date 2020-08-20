@@ -1,5 +1,5 @@
 /**
- * Implementation of the type_vec2.hpp header functions.
+ * Implementation of the type_vec3.hpp header functions.
  */
 
 namespace smath {
@@ -162,6 +162,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator%=(A scalar) {
 		this->x %= static_cast<T>(scalar);
 		this->y %= static_cast<T>(scalar);
+		this->z %= static_cast<T>(scalar);
 		return *this;
 	}
 
@@ -170,6 +171,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator%=(const vec<3, A> &v) {
 		this->x %= static_cast<T>(v.x);
 		this->y %= static_cast<T>(v.y);
+		this->z %= static_cast<T>(v.z);
 		return *this;
 	}
 
@@ -178,6 +180,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator&=(A scalar) {
 		this->x &= static_cast<T>(scalar);
 		this->y &= static_cast<T>(scalar);
+		this->z &= static_cast<T>(scalar);
 		return *this;
 	}
 
@@ -186,6 +189,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator&=(const vec<3, A> &v) {
 		this->x &= static_cast<T>(v.x);
 		this->y &= static_cast<T>(v.y);
+		this->z &= static_cast<T>(v.z);
 		return *this;
 	}
 
@@ -194,6 +198,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator|=(A scalar) {
 		this->x |= static_cast<T>(scalar);
 		this->y |= static_cast<T>(scalar);
+		this->z |= static_cast<T>(scalar);
 		return *this;
 	}
 
@@ -202,6 +207,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator|=(const vec<3, A> &v) {
 		this->x |= static_cast<T>(v.x);
 		this->y |= static_cast<T>(v.y);
+		this->z |= static_cast<T>(v.z);
 		return *this;
 	}
 
@@ -210,6 +216,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator^=(A scalar) {
 		this->x ^= static_cast<T>(scalar);
 		this->y ^= static_cast<T>(scalar);
+		this->z ^= static_cast<T>(scalar);
 		return *this;
 	}
 
@@ -218,6 +225,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator^=(const vec<3, A> &v) {
 		this->x ^= static_cast<T>(v.x);
 		this->y ^= static_cast<T>(v.y);
+		this->z ^= static_cast<T>(v.z);
 		return *this;
 	}
 
@@ -226,6 +234,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator<<=(A scalar) {
 		this->x <<= static_cast<T>(scalar);
 		this->y <<= static_cast<T>(scalar);
+		this->z <<= static_cast<T>(scalar);
 		return *this;
 	}
 
@@ -234,6 +243,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator<<=(const vec<3, A> &v) {
 		this->x <<= static_cast<T>(v.x);
 		this->y <<= static_cast<T>(v.y);
+		this->z <<= static_cast<T>(v.z);
 		return *this;
 	}
 
@@ -242,6 +252,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator>>=(A scalar) {
 		this->x >>= static_cast<T>(scalar);
 		this->y >>= static_cast<T>(scalar);
+		this->z >>= static_cast<T>(scalar);
 		return *this;
 	}
 
@@ -250,6 +261,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator>>=(const vec<3, A> &v) {
 		this->x >>= static_cast<T>(v.x);
 		this->y >>= static_cast<T>(v.y);
+		this->z >>= static_cast<T>(v.z);
 		return *this;
 	}
 
@@ -260,6 +272,7 @@ namespace smath {
 		// allow for prefix (i.e. ++a)
 		++this->x;
 		++this->y;
+		++this->z;
 		return *this;
 	}
 
@@ -275,6 +288,7 @@ namespace smath {
 	constexpr vec<3, T>& vec<3, T>::operator--() {
 		--this->x;
 		--this->y;
+		--this->z;
 		return *this;
 	}
 
@@ -294,7 +308,7 @@ namespace smath {
 
 	template<class T>
 	constexpr vec<3, T> operator-(const vec<3, T> &v) {
-		return vec<3, T>(-v.x, -v.y);
+		return vec<3, T>(-v.x, -v.y, -v.z);
 	}
 
 	// -- Binary arithmetic operators --
@@ -303,7 +317,8 @@ namespace smath {
 	constexpr vec<3, T> operator+(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x + scalar,
-			v.y + scalar
+			v.y + scalar,
+			v.z + scalar
 		);
 	}
 
@@ -311,7 +326,8 @@ namespace smath {
 	constexpr vec<3, T> operator+(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar + v.x,
-			scalar + v.y
+			scalar + v.y,
+			scalar + v.z
 		);
 	}
 
@@ -319,7 +335,8 @@ namespace smath {
 	constexpr vec<3, T> operator+(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x + v2.x,
-			v1.y + v2.y
+			v1.y + v2.y,
+			v1.z + v2.z
 		);
 	}
 
@@ -327,7 +344,8 @@ namespace smath {
 	constexpr vec<3, T> operator-(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x - scalar,
-			v.y - scalar
+			v.y - scalar,
+			v.z - scalar
 		);
 	}
 
@@ -335,7 +353,8 @@ namespace smath {
 	constexpr vec<3, T> operator-(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar - v.x,
-			scalar - v.y
+			scalar - v.y,
+			scalar - v.z
 		);
 	}
 
@@ -343,7 +362,8 @@ namespace smath {
 	constexpr vec<3, T> operator-(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x - v2.x,
-			v1.y - v2.y
+			v1.y - v2.y,
+			v1.z - v2.z
 		);
 	}
 
@@ -351,7 +371,8 @@ namespace smath {
 	constexpr vec<3, T> operator*(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x * scalar,
-			v.y * scalar
+			v.y * scalar,
+			v.z * scalar
 		);
 	}
 
@@ -359,7 +380,8 @@ namespace smath {
 	constexpr vec<3, T> operator*(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar * v.x,
-			scalar * v.y
+			scalar * v.y,
+			scalar * v.z
 		);
 	}
 
@@ -367,7 +389,8 @@ namespace smath {
 	constexpr vec<3, T> operator*(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x * v2.x,
-			v1.y * v2.y
+			v1.y * v2.y,
+			v1.z * v2.z
 		);
 	}
 
@@ -375,7 +398,8 @@ namespace smath {
 	constexpr vec<3, T> operator/(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x / scalar,
-			v.y / scalar
+			v.y / scalar,
+			v.z / scalar
 		);
 	}
 
@@ -383,7 +407,8 @@ namespace smath {
 	constexpr vec<3, T> operator/(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar / v.x,
-			scalar / v.y
+			scalar / v.y,
+			scalar / v.z
 		);
 	}
 
@@ -391,7 +416,8 @@ namespace smath {
 	constexpr vec<3, T> operator/(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x / v2.x,
-			v1.y / v2.y
+			v1.y / v2.y,
+			v1.z / v2.z
 		);
 	}
 
@@ -399,7 +425,8 @@ namespace smath {
 	constexpr vec<3, T> operator%(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x % scalar,
-			v.y % scalar
+			v.y % scalar,
+			v.z % scalar
 		);
 	}
 
@@ -407,7 +434,8 @@ namespace smath {
 	constexpr vec<3, T> operator%(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar % v.x,
-			scalar % v.y
+			scalar % v.y,
+			scalar % v.z
 		);
 	}
 
@@ -415,7 +443,8 @@ namespace smath {
 	constexpr vec<3, T> operator%(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x % v2.x,
-			v1.y % v2.y
+			v1.y % v2.y,
+			v1.z % v2.z
 		);
 	}
 
@@ -425,7 +454,8 @@ namespace smath {
 	constexpr vec<3, T> operator&(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x & scalar,
-			v.y & scalar
+			v.y & scalar,
+			v.z & scalar
 		);
 	}
 
@@ -433,7 +463,8 @@ namespace smath {
 	constexpr vec<3, T> operator&(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar & v.x,
-			scalar & v.y
+			scalar & v.y,
+			scalar & v.z
 		);
 	}
 
@@ -441,7 +472,8 @@ namespace smath {
 	constexpr vec<3, T> operator&(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x & v2.x,
-			v1.y & v2.y
+			v1.y & v2.y,
+			v1.z & v2.z
 		);
 	}
 
@@ -449,7 +481,8 @@ namespace smath {
 	constexpr vec<3, T> operator|(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x | scalar,
-			v.y | scalar
+			v.y | scalar,
+			v.z | scalar
 		);
 	}
 
@@ -457,7 +490,8 @@ namespace smath {
 	constexpr vec<3, T> operator|(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar | v.x,
-			scalar | v.y
+			scalar | v.y,
+			scalar | v.z
 		);
 	}
 
@@ -465,7 +499,8 @@ namespace smath {
 	constexpr vec<3, T> operator|(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x | v2.x,
-			v1.y | v2.y
+			v1.y | v2.y,
+			v1.z | v2.z
 		);
 	}
 
@@ -473,7 +508,8 @@ namespace smath {
 	constexpr vec<3, T> operator^(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x ^ scalar,
-			v.y ^ scalar
+			v.y ^ scalar,
+			v.z ^ scalar
 		);
 	}
 
@@ -481,7 +517,8 @@ namespace smath {
 	constexpr vec<3, T> operator^(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar ^ v.x,
-			scalar ^ v.y
+			scalar ^ v.y,
+			scalar ^ v.z
 		);
 	}
 
@@ -489,7 +526,8 @@ namespace smath {
 	constexpr vec<3, T> operator^(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x ^ v2.x,
-			v1.y ^ v2.y
+			v1.y ^ v2.y,
+			v1.z ^ v2.z
 		);
 	}
 
@@ -497,7 +535,8 @@ namespace smath {
 	constexpr vec<3, T> operator<<(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x << scalar,
-			v.y << scalar
+			v.y << scalar,
+			v.z << scalar
 		);
 	}
 
@@ -505,7 +544,8 @@ namespace smath {
 	constexpr vec<3, T> operator<<(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar << v.x,
-			scalar << v.y
+			scalar << v.y,
+			scalar << v.z
 		);
 	}
 
@@ -513,7 +553,8 @@ namespace smath {
 	constexpr vec<3, T> operator<<(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x << v2.x,
-			v1.y << v2.y
+			v1.y << v2.y,
+			v1.z << v2.z
 		);
 	}
 
@@ -521,7 +562,8 @@ namespace smath {
 	constexpr vec<3, T> operator>>(const vec<3, T> &v, T scalar) {
 		return vec<3, T>(
 			v.x >> scalar,
-			v.y >> scalar
+			v.y >> scalar,
+			v.z >> scalar
 		);
 	}
 
@@ -529,7 +571,8 @@ namespace smath {
 	constexpr vec<3, T> operator>>(T scalar, const vec<3, T> &v) {
 		return vec<3, T>(
 			scalar >> v.x,
-			scalar >> v.y
+			scalar >> v.y,
+			scalar >> v.z
 		);
 	}
 
@@ -537,7 +580,8 @@ namespace smath {
 	constexpr vec<3, T> operator>>(const vec<3, T> &v1, const vec<3, T> &v2) {
 		return vec<3, T>(
 			v1.x >> v2.x,
-			v1.y >> v2.y
+			v1.y >> v2.y,
+			v1.z >> v2.z
 		);
 	}
 
@@ -545,7 +589,8 @@ namespace smath {
 	constexpr vec<3, T> operator~(const vec<3, T> &v) {
 		return vec<3, T>(
 			~v.x,
-			~v.y
+			~v.y,
+			~v.z
 		);
 	}
 
@@ -562,14 +607,16 @@ namespace smath {
 	constexpr vec<3, bool> operator&&(const vec<3, bool> &v1, const vec<3, bool> &v2) {
 		return vec<3, bool>(
 			v1.x && v2.x,
-			v1.y && v2.y
+			v1.y && v2.y,
+			v1.z && v2.z
 		);
 	}
 
 	constexpr vec<3, bool> operator||(const vec<3, bool> &v1, const vec<3, bool> &v2) {
 		return vec<3, bool>(
 			v1.x || v2.x,
-			v1.y || v2.y
+			v1.y || v2.y,
+			v1.z || v2.z
 		);
 	}
 
