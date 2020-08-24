@@ -3,6 +3,7 @@
 #ifndef MATH_H
 #define MATH_H
 
+#include "setup/setup.hpp"
 #include "template_types.hpp"
 
 namespace smath {
@@ -12,7 +13,7 @@ namespace smath {
 	 * @returns The larger of the two provided types.
 	 */
 	template<class T>
-	constexpr const T& max(const T &a, const T &b) {
+	SMATH_CONSTEXPR const T& max(const T &a, const T &b) {
 		return (a < b) ? b : a;
 	}
 
@@ -21,7 +22,7 @@ namespace smath {
 	 * @returns The larger of the three provided types.
 	 */
 	template<class T>
-	constexpr const T max(const T &a, const T &b, const T &c) {
+	SMATH_CONSTEXPR const T max(const T &a, const T &b, const T &c) {
 		return smath::max(a, smath::max(b, c));
 	}
 
@@ -30,7 +31,7 @@ namespace smath {
 	 * @returns The smaller of the two provided types.
 	 */
 	template<class T>
-	constexpr const T& min(const T &a, const T &b) {
+	SMATH_CONSTEXPR const T& min(const T &a, const T &b) {
 		return (a < b) ? a : b;
 	}
 
@@ -39,7 +40,7 @@ namespace smath {
 	 * @returns The smaller of the three provided types.
 	 */
 	template<class T>
-	constexpr const T min(const T &a, const T &b, const T &c) {
+	SMATH_CONSTEXPR const T min(const T &a, const T &b, const T &c) {
 		return smath::min(a, smath::min(b, c));
 	}
 
@@ -51,8 +52,8 @@ namespace smath {
 	 * @returns The absolute value of the given type.
 	 */
 	template<class T>
-	constexpr const T abs(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'abs' only accepts integer or floating-point inputs");
+	SMATH_CONSTEXPR const T abs(const T &a) {
+		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'abs' only accepts integer or floating-point inputs");
 		return (a >= 0) ? a : -a;
 	}
 
@@ -61,8 +62,8 @@ namespace smath {
 	 * @returns An integer that is closest to the given input number.
 	 */
 	template<class T>
-	constexpr int round(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round' only accepts integer or floating-point inputs");
+	SMATH_CONSTEXPR int round(const T &a) {
+		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round' only accepts integer or floating-point inputs");
 		return static_cast<int>(a + 0.5);
 	}
 
@@ -73,8 +74,8 @@ namespace smath {
 	 * @returns The input rounded to the nearest multiple of the input parameter.
 	 */
 	template<class T>
-	constexpr int round_nearest(const T &a, const int &nearest) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round_nearest' only accept integers or floating-point inputs");
+	SMATH_CONSTEXPR int round_nearest(const T &a, const int &nearest) {
+		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'round_nearest' only accept integers or floating-point inputs");
 		return static_cast<int>(smath::round(static_cast<double>(a) / nearest) * nearest);
 	}
 
@@ -84,8 +85,8 @@ namespace smath {
 	 * @returns An integer that has been rounded down.
 	 */
 	template<class T>
-	constexpr int floor(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'floor' only accepts integer or floating-point inputs");
+	SMATH_CONSTEXPR int floor(const T &a) {
+		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'floor' only accepts integer or floating-point inputs");
 		if (smath::is_integer_type<T>::value) {
 			return a;
 		}
@@ -98,8 +99,8 @@ namespace smath {
 	 * point, if a decimal point exists.
 	 */
 	template<class T>
-	constexpr int ceil(const T &a) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'ceil' only accepts integer or floating-point inputs");
+	SMATH_CONSTEXPR int ceil(const T &a) {
+		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'ceil' only accepts integer or floating-point inputs");
 		if (smath::is_integer_type<T>::value) {
 			return a;
 		}
@@ -117,8 +118,8 @@ namespace smath {
 	 * @returns A scaled value.
 	 */
 	template<class T>
-	constexpr T scale(const T &x, const T &a, const T &b, const T &c, const T &d) {
-		static_assert(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'scale' only accepts integer or floating-point inputs");
+	SMATH_CONSTEXPR T scale(const T &x, const T &a, const T &b, const T &c, const T &d) {
+		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'scale' only accepts integer or floating-point inputs");
 		if (smath::is_integer_type<T>::value) {
 			return smath::round((d - c) * ((x - a) / static_cast<float>(b - a)) + c);
 		}
