@@ -240,6 +240,11 @@ namespace smath {
 	SMATH_CONSTEXPR vec<3, bool> operator&&(const vec<3, bool> &v1, const vec<3, bool> &v2);
 	SMATH_CONSTEXPR vec<3, bool> operator||(const vec<3, bool> &v1, const vec<3, bool> &v2);
 
+	// -- Output stream --
+
+	template<class T>
+	SMATH_CONSTEXPR std::ostream& operator<<(std::ostream &out, const vec<3, T> &v);
+
 } // namespace smath
 
 #include "type_vec3.inl"
