@@ -485,4 +485,10 @@ namespace smath {
 		return vec<1, bool>(v1.x || v2.x);
 	}
 
+	template<class T>
+	SMATH_CONSTEXPR std::ostream& operator<<(std::ostream &out, const vec<1, T> &v) {
+		out << '(' << v.x << ')';
+		return out;
+	}
+
 } // namespace smath
