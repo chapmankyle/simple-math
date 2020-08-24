@@ -17,7 +17,7 @@ namespace smath {
 		/**
 		 * @returns The number of components that the vector contains.
 		 */
-		static constexpr int size() {
+		static SMATH_CONSTEXPR int size() {
 			return 1;
 		}
 
@@ -26,14 +26,14 @@ namespace smath {
 		/**
 		 * Default constructor for a 1-component vector.
 		 */
-		constexpr vec();
+		SMATH_CONSTEXPR vec();
 
 		/**
 		 * Constructor to initialize a vector to a single scalar.
 		 * @tparam T The type of the vector.
 		 * @param scalar The scalar value to initialize the vector to.
 		 */
-		constexpr vec(T scalar);
+		SMATH_CONSTEXPR vec(T scalar);
 
 		/**
 		 * Constructor to initialize each component in the vector using
@@ -42,13 +42,13 @@ namespace smath {
 		 * @param _x The x component of the vector.
 		 */
 		template<class A>
-		constexpr vec(A _x);
+		SMATH_CONSTEXPR vec(A _x);
 
 		/**
 		 * Constructor to initialize a vector to another vector.
 		 * @param v The vector initialize to.
 		 */
-		constexpr vec(const vec<1, T> &v);
+		SMATH_CONSTEXPR vec(const vec<1, T> &v);
 
 		/**
 		 * Constructor to initialize a vector to a vector from another type.
@@ -56,174 +56,174 @@ namespace smath {
 		 * @param v The vector of a different type.
 		 */
 		template<class A>
-		constexpr vec(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec(const vec<1, A> &v);
 
 		// -- Element accesses --
 
-		constexpr T& operator[](int i);
-		constexpr const T& operator[](int i) const;
+		SMATH_CONSTEXPR T& operator[](int i);
+		SMATH_CONSTEXPR const T& operator[](int i) const;
 
 		// -- Unary arithmetic operators --
 
 		template<class A>
-		constexpr vec<1, T>& operator=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator+=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator+=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator+=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator+=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator-=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator-=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator-=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator-=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator*=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator*=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator*=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator*=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator/=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator/=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator/=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator/=(const vec<1, A> &v);
 
 		// -- Unary bit operators --
 
 		template<class A>
-		constexpr vec<1, T>& operator%=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator%=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator%=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator%=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator&=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator&=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator&=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator&=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator|=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator|=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator|=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator|=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator^=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator^=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator^=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator^=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator<<=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator<<=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator<<=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator<<=(const vec<1, A> &v);
 
 		template<class A>
-		constexpr vec<1, T>& operator>>=(A scalar);
+		SMATH_CONSTEXPR vec<1, T>& operator>>=(A scalar);
 		template<class A>
-		constexpr vec<1, T>& operator>>=(const vec<1, A> &v);
+		SMATH_CONSTEXPR vec<1, T>& operator>>=(const vec<1, A> &v);
 
 		// -- Increment and decrement operators --
 
-		constexpr vec<1, T>& operator++();
-		constexpr vec<1, T> operator++(int);
+		SMATH_CONSTEXPR vec<1, T>& operator++();
+		SMATH_CONSTEXPR vec<1, T> operator++(int);
 
-		constexpr vec<1, T>& operator--();
-		constexpr vec<1, T> operator--(int);
+		SMATH_CONSTEXPR vec<1, T>& operator--();
+		SMATH_CONSTEXPR vec<1, T> operator--(int);
 
 	};
 
 	// -- Unary arithmetic operators --
 
 	template<class T>
-	constexpr vec<1, T> operator+(const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator+(const vec<1, T> &v);
 
 	template<class T>
-	constexpr vec<1, T> operator-(const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator-(const vec<1, T> &v);
 
 	// -- Binary arithmetic operators --
 
 	template<class T>
-	constexpr vec<1, T> operator+(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator+(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator+(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator+(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator+(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator+(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator-(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator-(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator-(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator-(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator-(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator-(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator*(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator*(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator*(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator*(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator*(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator*(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator/(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator/(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator/(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator/(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator/(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator/(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator%(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator%(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator%(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator%(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator%(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator%(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	// -- Bitwise arithmetic operators --
 
 	template<class T>
-	constexpr vec<1, T> operator&(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator&(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator&(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator&(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator&(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator&(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator|(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator|(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator|(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator|(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator|(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator|(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator^(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator^(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator^(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator^(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator^(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator^(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator<<(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator<<(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator<<(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator<<(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator<<(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator<<(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator>>(const vec<1, T> &v, T scalar);
+	SMATH_CONSTEXPR vec<1, T> operator>>(const vec<1, T> &v, T scalar);
 	template<class T>
-	constexpr vec<1, T> operator>>(T scalar, const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator>>(T scalar, const vec<1, T> &v);
 	template<class T>
-	constexpr vec<1, T> operator>>(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR vec<1, T> operator>>(const vec<1, T> &v1, const vec<1, T> &v2);
 
 	template<class T>
-	constexpr vec<1, T> operator~(const vec<1, T> &v);
+	SMATH_CONSTEXPR vec<1, T> operator~(const vec<1, T> &v);
 
 	// -- Boolean operators --
 
 	template<class T>
-	constexpr bool operator==(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR bool operator==(const vec<1, T> &v1, const vec<1, T> &v2);
 	template<class T>
-	constexpr bool operator!=(const vec<1, T> &v1, const vec<1, T> &v2);
+	SMATH_CONSTEXPR bool operator!=(const vec<1, T> &v1, const vec<1, T> &v2);
 
-	constexpr vec<1, bool> operator&&(const vec<1, bool> &v1, const vec<1, bool> &v2);
-	constexpr vec<1, bool> operator||(const vec<1, bool> &v1, const vec<1, bool> &v2);
+	SMATH_CONSTEXPR vec<1, bool> operator&&(const vec<1, bool> &v1, const vec<1, bool> &v2);
+	SMATH_CONSTEXPR vec<1, bool> operator||(const vec<1, bool> &v1, const vec<1, bool> &v2);
 
 } // namespace smath
 
