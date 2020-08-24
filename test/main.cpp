@@ -41,81 +41,65 @@ void test_min() {
  * Test the smath::abs function against std::abs
  */
 void test_abs() {
-	std::cout << "-------- ABS --------\n";
-	std::cout << smath::abs(-9.2) << '\n';
-	std::cout << std::abs(-9.2) << '\n';
+	std::cout << "\033[32m-- smath::abs --\033[0m\n";
 
-	std::cout << smath::abs(17) << '\n';
-	std::cout << std::abs(17) << '\n';
-	std::cout << '\n';
+	SMATH_STATIC_ASSERT(smath::abs(-9.2f) == std::abs(-9.2f), "Failed abs(-9.2f)");
+	SMATH_STATIC_ASSERT(smath::abs(3.9) == std::abs(3.9), "Failed abs(3.9)");
+	SMATH_STATIC_ASSERT(smath::abs(17) == std::abs(17), "Failed abs(17)");
+
+	std::cout << "Passed\n\n";
 }
 
 /**
  * Test the smath::sqrt function against std::sqrt
  */
 void test_sqrt() {
-	std::cout << "-------- SQRT --------\n";
-	std::cout << std::setprecision(16);
+	std::cout << "\033[32m-- smath::sqrt --\033[0m\n";
 
-	std::cout << smath::sqrt(2.0f) << '\n';
-	std::cout << std::sqrt(2.0f) << '\n';
-	std::cout << smath::sqrt(2.0) << '\n';
-	std::cout << std::sqrt(2.0) << '\n';
-	std::cout << '\n';
+	assert(smath::sqrt(smath::vec1(4)) == smath::vec1(std::sqrt(4)) && "Failed sqrt of vec1(4)");
+	assert(smath::sqrt(smath::vec1(4.0)) == smath::vec1(std::sqrt(4.0)) && "Failed sqrt of vec1(4.0)");
+	assert(smath::sqrt(smath::vec1(4.0f)) == smath::vec1(std::sqrt(4.0f)) && "Failed sqrt of vec1(4.0f)");
 
-	std::cout << smath::sqrt(4.0f) << '\n';
-	std::cout << std::sqrt(4.0f) << '\n';
-	std::cout << smath::sqrt(4.0) << '\n';
-	std::cout << std::sqrt(4.0) << '\n';
-	std::cout << '\n';
+	assert(smath::sqrt(smath::vec2(4, 16)) == smath::vec2(std::sqrt(4), std::sqrt(16)) && "Failed sqrt of vec2(4,16)");
+	assert(smath::sqrt(smath::vec2(4.0, 16.0)) == smath::vec2(std::sqrt(4.0), std::sqrt(16.0)) && "Failed sqrt of vec2(4.0,16.0)");
+	assert(smath::sqrt(smath::vec2(4.0f, 16.0f)) == smath::vec2(std::sqrt(4.0f), std::sqrt(16.0f)) && "Failed sqrt of vec2(4.0f,16.0f)");
 
-	std::cout << smath::sqrt(16.0f) << '\n';
-	std::cout << std::sqrt(16.0f) << '\n';
-	std::cout << smath::sqrt(16.0) << '\n';
-	std::cout << std::sqrt(16.0) << '\n';
-	std::cout << std::setprecision(4) << '\n';
+	assert(smath::sqrt(smath::vec3(4, 16, 12)) == smath::vec3(std::sqrt(4), std::sqrt(16), std::sqrt(12)) && "Failed sqrt of vec3(4,16,12)");
+	assert(smath::sqrt(smath::vec3(4.0, 16.0, 12.0)) == smath::vec3(std::sqrt(4.0), std::sqrt(16.0), std::sqrt(12.0)) && "Failed sqrt of vec3(4.0,16.0,12.0)");
+	assert(smath::sqrt(smath::vec3(4.0f, 16.0f, 12.0f)) == smath::vec3(std::sqrt(4.0f), std::sqrt(16.0f), std::sqrt(12.0f)) && "Failed sqrt of vec3(4.0f,16.0f,12.0f)");
+
+	std::cout << "Passed\n\n";
 }
 
 /**
  * Test the smath::round function against std::round
  */
 void test_round() {
-	std::cout << "-------- ROUND --------\n";
-	std::cout << smath::round(7.2f) << '\n';
-	std::cout << std::round(7.2f) << '\n';
+	std::cout << "\033[32m-- smath::round --\033[0m\n";
 
-	std::cout << smath::round(7.6) << '\n';
-	std::cout << std::round(7.6) << '\n';
+	assert(smath::round(7.2f) == std::round(7.2f) && "Failed round(7.2f)");
+	assert(smath::round(6.4) == std::round(6.4) && "Failed round(6.4)");
+	assert(smath::round(2) == std::round(2) && "Failed round(2)");
 
-	std::cout << smath::round(2) << '\n';
-	std::cout << std::round(2) << '\n';
+	assert(smath::round_nearest(38, 10) == 40 && "Failed round_nearest(38,10)");
+	assert(smath::round_nearest(12.5, 5) == 15 && "Failed round_nearest(12.5,5)");
 
-	std::cout << smath::round_nearest(38, 10) << '\n';
-	std::cout << smath::round_nearest(12.5, 5) << '\n';
-	std::cout << '\n';
+	std::cout << "Passed\n\n";
 }
 
 /**
  * Test the smath::floor function against std::floor
  */
 void test_floor() {
-	std::cout << "-------- FLOOR --------\n";
-	std::cout << smath::floor(0) << '\n';
-	std::cout << std::floor(0) << '\n';
+	std::cout << "\033[32m-- smath::floor --\033[0m\n";
 
-	std::cout << smath::floor(-1.2) << '\n';
-	std::cout << std::floor(-1.2) << '\n';
+	assert(smath::floor(0) == std::floor(0) && "Failed floor(0)");
+	assert(smath::floor(-1.2) == std::floor(-1.2) && "Failed floor(-1.2)");
+	assert(smath::floor(1.2) == std::floor(1.2) && "Failed floor(1.2)");
+	assert(smath::floor(2.7) == std::floor(2.7) && "Failed floor(2.7)");
+	assert(smath::floor(3) == std::floor(3) && "Failed floor(3)");
 
-	std::cout << smath::floor(1.2) << '\n';
-	std::cout << std::floor(1.2) << '\n';
-
-	std::cout << smath::floor(2.7) << '\n';
-	std::cout << std::floor(2.7) << '\n';
-
-	std::cout << smath::floor(3) << '\n';
-	std::cout << std::floor(3) << '\n';
-	std::cout << '\n';
-	std::log(3);
+	std::cout << "Passed\n\n";
 }
 
 /**
@@ -171,6 +155,7 @@ void test_scale() {
  */
 void test_vec2() {
 	std::cout << "-------- VECTOR 2f --------\n";
+
 	smath::vec2 A{ 4.2f, 0.05f };
 	smath::vec2 B{ 8.9f, 1.1f };
 
@@ -181,13 +166,13 @@ void test_vec2() {
 	std::cout << A[0] << '\n';
 
 	std::cout << B[0] << '\n';
-	std::cout << '(' << C[0] << ", " << C[1] << ")\n";
+	std::cout << C << '\n';
 
 	smath::vec2 D{ B * C };
-	std::cout << '(' << D.x << ", " << D.y << ")\n";
+	std::cout << D << '\n';
 
 	smath::vec2 E{ 1.0f / B };
-	std::cout << '(' << E.x << ", " << E.y << ")\n";
+	std::cout << E << '\n';
 	std::cout << '\n';
 }
 
@@ -221,10 +206,10 @@ void test_vec3() {
  */
 void test_consts() {
 	std::cout << "-------- CONSTS --------\n";
-	std::cout << smath::PI << '\n';
+	std::cout << smath::constants::PI << '\n';
 	std::cout << M_PI << '\n';
 
-	std::cout << smath::E << '\n';
+	std::cout << smath::constants::E << '\n';
 	std::cout << M_E << '\n';
 	std::cout << '\n';
 }
