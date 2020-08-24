@@ -3,6 +3,8 @@
 #ifndef SMATH_H
 #define SMATH_H
 
+#include "setup/setup.hpp"
+
 #include "constants.hpp"
 #include "exponential.hpp"
 #include "math.hpp"
