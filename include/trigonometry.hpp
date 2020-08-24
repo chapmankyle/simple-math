@@ -3,6 +3,7 @@
 #ifndef TRIGONOMETRY_H
 #define TRIGONOMETRY_H
 
+#include "setup/setup.hpp"
 #include "constants.hpp"
 #include "template_types.hpp"
 
@@ -13,9 +14,9 @@ namespace smath {
 	 * @returns The number in terms of radians.
 	 */
 	template<class T>
-	constexpr const T to_radians(const T &degrees) {
-		static_assert(smath::is_floating_type<T>::value, "'to_radians' only accepts floating-point inputs");
-		return degrees * static_cast<T>(smath::RAD);
+	SMATH_CONSTEXPR const T to_radians(const T &degrees) {
+		SMATH_STATIC_ASSERT(smath::is_floating_type<T>::value, "'to_radians' only accepts floating-point inputs");
+		return degrees * static_cast<T>(smath::constants::RAD);
 	}
 
 	/**
@@ -23,9 +24,9 @@ namespace smath {
 	 * @returns The number in terms of degrees.
 	 */
 	template<class T>
-	constexpr const T to_degrees(const T &radians) {
-		static_assert(smath::is_floating_type<T>::value, "'to_degrees' only accepts floating-point inputs");
-		return radians * static_cast<T>(smath::DEG);
+	SMATH_CONSTEXPR const T to_degrees(const T &radians) {
+		SMATH_STATIC_ASSERT(smath::is_floating_type<T>::value, "'to_degrees' only accepts floating-point inputs");
+		return radians * static_cast<T>(smath::constants::DEG);
 	}
 
 } // namespace smath
