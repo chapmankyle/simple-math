@@ -5,6 +5,8 @@
 
 #include <cassert>
 
+#include "../setup/setup.hpp"
+
 namespace smath {
 
 	// ---------------
