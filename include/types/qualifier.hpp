@@ -23,7 +23,7 @@ namespace smath {
 	 * @tparam L The length of the vector, in range [1, 4]
 	 * @tparam T The type of data to store in the vector (float, double or integer)
 	 */
-	template<int L, class T> struct vec;
+	template<length_t L, class T> struct vec;
 
 } // namespace smath
 
