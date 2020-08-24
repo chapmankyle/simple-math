@@ -9,45 +9,32 @@
  * Test the smath::max function against std::max
  */
 void test_max() {
-	std::cout << "-------- MAX --------\n";
-	std::cout << smath::max(3, 5) << '\n';
-	std::cout << std::max(3, 5) << '\n';
+	std::cout << "\033[32m-- smath::max --\033[0m\n";
 
-	std::cout << smath::max(8.4f, 5.2f) << '\n';
-	std::cout << std::max(8.4f, 5.2f) << '\n';
+	SMATH_STATIC_ASSERT(smath::max(3, 5) == std::max(3, 5), "Failed max(3, 5)");
+	SMATH_STATIC_ASSERT(smath::max(8.4f, 5.2f) == std::max(8.4f, 5.2f), "Failed max(8.4f, 5.2f)");
 
-	std::cout << smath::max('a', 'z') << '\n';
-	std::cout << std::max('a', 'z') << '\n';
+	SMATH_STATIC_ASSERT(smath::max('a', 'z') == std::max('a', 'z'), "Failed max('a', 'z')");
+	SMATH_STATIC_ASSERT(smath::max('A', 'Z') == std::max('A', 'Z'), "Failed max('A', 'Z')");
+	SMATH_STATIC_ASSERT(smath::max('A', 'z') == std::max('A', 'z'), "Failed max('A', 'z')");
 
-	std::cout << smath::max('A', 'Z') << '\n';
-	std::cout << std::max('A', 'Z') << '\n';
-
-	std::cout << smath::max('A', 'z') << '\n';
-	std::cout << std::max('A', 'z') << '\n';
-
-	std::cout << '\n';
+	std::cout << "Passed\n\n";
 }
 
 /**
  * Test the smath::min function against std::min
  */
 void test_min() {
-	std::cout << "-------- MIN --------\n";
-	std::cout << smath::min(3, 5) << '\n';
-	std::cout << std::min(3, 5) << '\n';
+	std::cout << "\033[32m-- smath::min --\033[0m\n";
 
-	std::cout << smath::min(8.4f, 5.2f) << '\n';
-	std::cout << std::min(8.4f, 5.2f) << '\n';
+	SMATH_STATIC_ASSERT(smath::min(3, 5) == std::min(3, 5), "Failed min(3, 5");
+	SMATH_STATIC_ASSERT(smath::min(8.4f, 5.2f) == std::min(8.4f, 5.2f), "Failed min(8.4f, 5.2f)");
 
-	std::cout << smath::min('a', 'z') << '\n';
-	std::cout << std::min('a', 'z') << '\n';
+	SMATH_STATIC_ASSERT(smath::min('a', 'z') == std::min('a', 'z'), "Failed min('a', 'z')");
+	SMATH_STATIC_ASSERT(smath::min('A', 'Z') == std::min('A', 'Z'), "Failed min('A', 'Z')");
+	SMATH_STATIC_ASSERT(smath::min('A', 'z') == std::min('A', 'z'), "Failed min('A', 'z')");
 
-	std::cout << smath::min('A', 'Z') << '\n';
-	std::cout << std::min('A', 'Z') << '\n';
-
-	std::cout << smath::min('A', 'z') << '\n';
-	std::cout << std::min('A', 'z') << '\n';
-	std::cout << '\n';
+	std::cout << "Passed\n\n";
 }
 
 /**
@@ -246,6 +233,8 @@ void test_consts() {
  * Main function for testing
  */
 int main() {
+
+	std::cout << '\n';
 
 	test_max();
 	test_min();
