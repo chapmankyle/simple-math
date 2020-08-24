@@ -558,4 +558,10 @@ namespace smath {
 		);
 	}
 
+	template<class T>
+	SMATH_CONSTEXPR std::ostream& operator<<(std::ostream &out, const vec<2, T> &v) {
+		out << '(' << v.x << ", " << v.y << ')';
+		return out;
+	}
+
 } // namespace smath
