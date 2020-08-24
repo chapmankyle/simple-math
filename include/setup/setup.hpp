@@ -5,6 +5,13 @@
 
 #include "platform.hpp"
 
+namespace smath {
+
+	using length_t = int;
+
+} // namespace glm
+
+
 //  __      __           _
 //  \ \    / /          (_)
 //   \ \  / /__ _ __ ___ _  ___  _ __
