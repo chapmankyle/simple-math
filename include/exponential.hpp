@@ -80,7 +80,7 @@ namespace smath {
 	template<length_t L, class T>
 	SMATH_CONSTEXPR vec<L, T> sqrt(const vec<L, T> &v) {
 		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'sqrt' only accepts an integer or floating-point vector");
-		SMATH_STATIC_ASSERT(L > 0 && L < 4, "'sqrt' currently only works on vectors with 1 to 3 components");
+		SMATH_STATIC_ASSERT(smath::is_valid_vector(L), "'sqrt' currently only works on vectors with 1 to 4 components");
 		return function::one<vec, L, T, T>::apply(::std::sqrt, v);
 	}
 
