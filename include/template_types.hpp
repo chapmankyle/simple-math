@@ -3,6 +3,8 @@
 #ifndef TEMPLATE_TYPES_H
 #define TEMPLATE_TYPES_H
 
+#include "setup/setup.hpp"
+
 namespace smath {
 
 	/**
@@ -15,6 +17,11 @@ namespace smath {
 	template<>
 	struct is_integer_type<int> {
 		static const bool value = true;
+	};
+
+	template<>
+	struct is_integer_type<bool> {
+		static const bool value = false;
 	};
 
 	template<>
@@ -55,6 +62,11 @@ namespace smath {
 	};
 
 	template<>
+	struct is_floating_type<bool> {
+		static const bool value = false;
+	};
+
+	template<>
 	struct is_floating_type<char> {
 		static const bool value = false;
 	};
@@ -63,7 +75,7 @@ namespace smath {
 	 * Used to check if a vector has a valid length.
 	 * @param L The length of the vector.
 	 */
-	inline constexpr bool is_valid_vector(int L) {
+	SMATH_CONSTEXPR bool is_valid_vector(int L) {
 		return L >= 1 && L <= 4;
 	}
 
