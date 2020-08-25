@@ -106,48 +106,42 @@ void test_floor() {
  * Test the smath::ceil function against std::ceil
  */
 void test_ceil() {
-	std::cout << "-------- CEIL --------\n";
-	std::cout << smath::ceil(0) << '\n';
-	std::cout << std::ceil(0) << '\n';
+	std::cout << "\033[32m-- smath::ceil --\033[0m\n";
 
-	std::cout << smath::ceil(-1.2) << '\n';
-	std::cout << std::ceil(-1.2) << '\n';
+	assert(smath::ceil(0) == std::ceil(0) && "Failed ceil(0)");
+	assert(smath::ceil(-1.2) == std::ceil(-1.2) && "Failed ceil(-1.2)");
+	assert(smath::ceil(1.2) == std::ceil(1.2) && "Failed ceil(1.2)");
+	assert(smath::ceil(2.7) == std::ceil(2.7) && "Failed ceil(2.7)");
+	assert(smath::ceil(3) == std::ceil(3) && "Failed ceil(3)");
 
-	std::cout << smath::ceil(1.2) << '\n';
-	std::cout << std::ceil(1.2) << '\n';
-
-	std::cout << smath::ceil(2.7) << '\n';
-	std::cout << std::ceil(2.7) << '\n';
-
-	std::cout << smath::ceil(3) << '\n';
-	std::cout << std::ceil(3) << '\n';
-	std::cout << '\n';
+	std::cout << "Passed\n\n";
 }
 
 /**
  * Test the conversion between degrees and radians
  */
 void test_convert_radians_degrees() {
-	std::cout << "-------- CONVERTING --------\n";
-	std::cout << smath::to_radians(180.0f) << '\n';
-	std::cout << smath::to_radians(90.0f) << '\n';
-	std::cout << smath::to_radians(45.0f) << '\n';
-	std::cout << smath::to_radians(1.0f) << '\n';
+	std::cout << "\033[32m-- radians and degrees --\033[0m\n";
 
-	std::cout << smath::to_degrees(3.1416f) << '\n';
-	std::cout << smath::to_degrees(1.573f) << '\n';
-	std::cout << '\n';
+	SMATH_STATIC_ASSERT(smath::to_radians(smath::to_degrees(3.1416f)) == 3.1416f, "Failed radians(degrees(3.1416f))");
+
+	SMATH_STATIC_ASSERT(smath::to_degrees(smath::to_radians(180.f)) == 180, "Failed degrees(radians(180.f))");
+	SMATH_STATIC_ASSERT(smath::to_degrees(smath::to_radians(90.f)) == 90, "Failed degrees(radians(90.f))");
+	SMATH_STATIC_ASSERT(smath::to_degrees(smath::to_radians(45.f)) == 45, "Failed degrees(radians(45.f))");
+
+	std::cout << "Passed\n\n";
 }
 
 /**
  * Test the scaling of a number to a new range
  */
 void test_scale() {
-	std::cout << "-------- SCALE --------\n";
-	std::cout << smath::scale(3, 1, 10, 1, 100) << '\n';
-	std::cout << smath::scale(27, 11, 40, 1, 100) << '\n';
-	std::cout << smath::scale(1.0f, 0.1f, 4.0f, 1.0f, 100.0f) << '\n';
-	std::cout << '\n';
+	std::cout << "\033[32m-- smath::scale --\033[0m\n";
+
+	SMATH_STATIC_ASSERT(smath::scale(3, 1, 10, 1, 100) == 23, "Failed scale(3,1,10,1,100)");
+	SMATH_STATIC_ASSERT(smath::scale(27, 11, 40, 1, 100) == 56, "Failed scale(27,11,40,1,100)");
+
+	std::cout << "Passed\n\n";
 }
 
 /**
@@ -191,13 +185,13 @@ void test_vec3() {
 	std::cout << A[0] << '\n';
 
 	std::cout << B[0] << '\n';
-	std::cout << '(' << C[0] << ", " << C[1] << ", " << C[2] << ")\n";
+	std::cout << C << '\n';
 
 	smath::vec3 D{ B * C };
-	std::cout << '(' << D.x << ", " << D.y << ", " << D.z << ")\n";
+	std::cout << D << '\n';
 
 	smath::vec3 E{ 1.0f / B };
-	std::cout << '(' << E.x << ", " << E.y << ", " << E.z << ")\n";
+	std::cout << E << '\n';
 	std::cout << '\n';
 }
 
