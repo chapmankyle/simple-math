@@ -1,11 +1,11 @@
 #pragma once
 
-#ifndef DETAIL_QUALIFIER_H
-#define DETAIL_QUALIFIER_H
+#ifndef QUALIFIER_H
+#define QUALIFIER_H
 
 #include <cassert>
 
-#include "../setup/setup.hpp"
+#include "../detail/setup.hpp"
 
 namespace smath {
 
@@ -21,10 +21,10 @@ namespace smath {
 	/**
 	 * General vector of arbitrary length and type.
 	 * @tparam L The length of the vector, in range [1, 4]
-	 * @tparam T The type of data to store in the vector (float, double or integer)
+	 * @tparam T The type of data to store in the vector (bool, int, float or double)
 	 */
 	template<length_t L, class T> struct vec;
 
 } // namespace smath
 
-#endif
+#endif // QUALIFIER_H
