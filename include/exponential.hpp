@@ -6,14 +6,11 @@
 #include <cmath>
 #include <cstdint>
 
-#include "setup/setup.hpp"
-#include "types/function.hpp"
+#include "detail/setup.hpp"
+#include "detail/function.hpp"
 
 #include "template_types.hpp"
-
-#include "types/type_vec1.hpp"
-#include "types/type_vec2.hpp"
-#include "types/type_vec3.hpp"
+#include "vec.hpp"
 
 namespace smath {
 
@@ -72,7 +69,7 @@ namespace smath {
 
 	/**
 	 * @brief Performs the square root on all of the components of a vector.
-	 * @tparam L The number of components in the vector (1 <= L <= 4)
+	 * @tparam L The number of components in the vector in range [1, 4]
 	 * @tparam T The type of the vector (bool, int, float, double)
 	 * @param v The vector to apply the function to.
 	 * @returns A vector containing the square root of all the components.
@@ -80,7 +77,7 @@ namespace smath {
 	template<length_t L, class T>
 	SMATH_CONSTEXPR vec<L, T> sqrt(const vec<L, T> &v) {
 		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'sqrt' only accepts an integer or floating-point vector");
-		SMATH_STATIC_ASSERT(smath::is_valid_vector(L), "'sqrt' currently only works on vectors with 1 to 4 components");
+		SMATH_STATIC_ASSERT(smath::is_valid_vector(L), "'sqrt' only works on vectors with 1 to 4 components");
 		return function::one<vec, L, T, T>::apply(::std::sqrt, v);
 	}
 
