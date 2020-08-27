@@ -4,6 +4,7 @@
 #define QUALIFIER_H
 
 #include <cassert>
+#include <iostream>
 
 #include "../detail/setup.hpp"
 
