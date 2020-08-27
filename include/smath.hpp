@@ -3,7 +3,7 @@
 #ifndef SMATH_H
 #define SMATH_H
 
-#include "setup/setup.hpp"
+#include "detail/setup.hpp"
 
 #include "constants.hpp"
 #include "exponential.hpp"
@@ -12,4 +12,4 @@
 #include "trigonometry.hpp"
 #include "vec.hpp"
 
-#endif
+#endif // SMATH_H

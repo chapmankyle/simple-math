@@ -3,27 +3,29 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
+#include "detail/setup.hpp"
+
 namespace smath {
 
 	namespace constants {
-		inline constexpr double PI   { 3.14159265358979323846 }; // pi
-		inline constexpr double TWOPI{ 6.28318530717958647693 }; // 2*pi
-		inline constexpr double PI2  { 1.57079632679489661923 }; // pi/2
-		inline constexpr double PI4  { 0.78539816339744830962 }; // pi/4
+		SMATH_INLINE SMATH_CONSTEXPR double PI   { 3.14159265358979323846 }; // pi
+		SMATH_INLINE SMATH_CONSTEXPR double TWOPI{ 6.28318530717958647693 }; // 2*pi
+		SMATH_INLINE SMATH_CONSTEXPR double PI2  { 1.57079632679489661923 }; // pi/2
+		SMATH_INLINE SMATH_CONSTEXPR double PI4  { 0.78539816339744830962 }; // pi/4
 
-		inline constexpr double RAD{ 0.01745329251994329577 }; // pi/180 (1 radians = RAD degrees)
-		inline constexpr double DEG{ 57.2957795130823208768 }; // 180/pi (1 degree = DEG radians)
+		SMATH_INLINE SMATH_CONSTEXPR double RAD{ 0.01745329251994329577 }; // pi/180 (1 radians = RAD degrees)
+		SMATH_INLINE SMATH_CONSTEXPR double DEG{ 57.2957795130823208768 }; // 180/pi (1 degree = DEG radians)
 
-		inline constexpr double E     { 2.7182818284590452354 }; // e
-		inline constexpr double LOG2E { 1.4426950408889634074 }; // log_2 e
-		inline constexpr double LOG10E{ 0.4342944819032518277 }; // log_10 e
-		inline constexpr double LN2   { 0.6931471805599453094 }; // log_e 2
-		inline constexpr double LN10  { 2.3025850929940456840 }; // log_e 10
+		SMATH_INLINE SMATH_CONSTEXPR double E     { 2.7182818284590452354 }; // e
+		SMATH_INLINE SMATH_CONSTEXPR double LOG2E { 1.4426950408889634074 }; // log_2 e
+		SMATH_INLINE SMATH_CONSTEXPR double LOG10E{ 0.4342944819032518277 }; // log_10 e
+		SMATH_INLINE SMATH_CONSTEXPR double LN2   { 0.6931471805599453094 }; // log_e 2
+		SMATH_INLINE SMATH_CONSTEXPR double LN10  { 2.3025850929940456840 }; // log_e 10
 
-		inline constexpr double SQRT2{ 1.41421356237309504880 }; // sqrt(2)
+		SMATH_INLINE SMATH_CONSTEXPR double SQRT2{ 1.41421356237309504880 }; // sqrt(2)
 
 	} // namespace constants
 
 } // namespace smath
 
-#endif
+#endif // CONSTANTS_H

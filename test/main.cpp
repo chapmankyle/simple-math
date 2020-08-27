@@ -1,7 +1,5 @@
-#include <iostream>
 #include <cmath>
-#include <iomanip>
-#include <typeinfo>
+#include <iostream>
 
 #include "include/smath.hpp"
 
@@ -123,11 +121,14 @@ void test_ceil() {
 void test_convert_radians_degrees() {
 	std::cout << "\033[32m-- radians and degrees --\033[0m\n";
 
-	SMATH_STATIC_ASSERT(smath::to_radians(smath::to_degrees(3.1416f)) == 3.1416f, "Failed radians(degrees(3.1416f))");
+	SMATH_STATIC_ASSERT(smath::radians(smath::degrees(3.1416f)) == 3.1416f, "Failed radians(degrees(3.1416f))");
 
-	SMATH_STATIC_ASSERT(smath::to_degrees(smath::to_radians(180.f)) == 180, "Failed degrees(radians(180.f))");
-	SMATH_STATIC_ASSERT(smath::to_degrees(smath::to_radians(90.f)) == 90, "Failed degrees(radians(90.f))");
-	SMATH_STATIC_ASSERT(smath::to_degrees(smath::to_radians(45.f)) == 45, "Failed degrees(radians(45.f))");
+	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(180.f)) == 180, "Failed degrees(radians(180.f))");
+	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(90.f)) == 90, "Failed degrees(radians(90.f))");
+	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(45.f)) == 45, "Failed degrees(radians(45.f))");
+
+	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(smath::vec1(180.f))) == smath::vec1(smath::degrees(smath::radians(180.f))), "Failed degrees(vec1)");
+	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(smath::vec1(90.f))) == smath::vec1(smath::degrees(smath::radians(90.f))), "Failed degrees(vec1)");
 
 	std::cout << "Passed\n\n";
 }

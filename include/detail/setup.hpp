@@ -9,7 +9,7 @@ namespace smath {
 
 	using length_t = int;
 
-} // namespace glm
+} // namespace smath
 
 
 //  __      __           _
@@ -125,5 +125,9 @@ namespace smath {
 #else
 #	define SMATH_STATIC_ASSERT(x, message) assert(x && message)
 #endif
+
+// -- inline
+
+#define SMATH_INLINE inline
 
 #endif // SETUP_H

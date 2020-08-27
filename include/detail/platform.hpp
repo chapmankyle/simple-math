@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef SETUP_PLATFORM_H
-#define SETUP_PLATFORM_H
+#ifndef PLATFORM_H
+#define PLATFORM_H
 
 //   _____  _       _    __
 //  |  __ \| |     | |  / _|
@@ -190,4 +190,4 @@
 #	error "smath could not detect your compiler, aborting ..."
 #endif
 
-#endif // SETUP_PLATFORM_H
+#endif // PLATFORM_H

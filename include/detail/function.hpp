@@ -3,7 +3,7 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
-#include "qualifier.hpp"
+#include "../types/qualifier.hpp"
 
 namespace smath {
 
@@ -71,4 +71,4 @@ namespace smath {
 
 } // namespace smath
 
-#endif
+#endif // FUNCTION_H
