@@ -63,24 +63,45 @@ namespace smath {
 	 * @returns The square root of the floating-point input number.
 	 */
 	template<class T>
-	SMATH_CONSTEXPR const T sqrt(const T &a) {
+	SMATH_INLINE SMATH_CONSTEXPR const T sqrt(const T &a) {
 		return ::std::sqrt(a);
 	}
 
 	/**
 	 * @brief Performs the square root on all of the components of a vector.
 	 * @tparam L The number of components in the vector in range [1, 4]
-	 * @tparam T The type of the vector (bool, int, float, double)
-	 * @param v The vector to apply the function to.
+	 * @tparam T The type of the vector (int, float, double)
 	 * @returns A vector containing the square root of all the components.
 	 */
 	template<length_t L, class T>
-	SMATH_CONSTEXPR vec<L, T> sqrt(const vec<L, T> &v) {
+	SMATH_INLINE SMATH_CONSTEXPR vec<L, T> sqrt(const vec<L, T> &v) {
 		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'sqrt' only accepts an integer or floating-point vector");
 		SMATH_STATIC_ASSERT(smath::is_valid_vector(L), "'sqrt' only works on vectors with 1 to 4 components");
 		return function::one<vec, L, T, T>::apply(::std::sqrt, v);
 	}
 
+	/**
+	 * @brief Performs the log of a floating-point number.
+	 * @returns The log of the floating-point input number.
+	 */
+	template<class T>
+	SMATH_INLINE SMATH_CONSTEXPR const T log(const T &a) {
+		return ::std::log(a);
+	}
+
+	/**
+	 * @brief Performs the logarithm on all of the components of a vector.
+	 * @tparam L The number of components in the vector in range [1, 4]
+	 * @tparam T The type of the vector (int, float, double)
+	 * @returns A vector containing the logarithm of all the components.
+	 */
+	template<length_t L, class T>
+	SMATH_INLINE SMATH_CONSTEXPR vec<L, T> log(const vec<L, T> &v) {
+		SMATH_STATIC_ASSERT(smath::is_integer_type<T>::value || smath::is_floating_type<T>::value, "'log' only accepts an integer or floating-point vector");
+		SMATH_STATIC_ASSERT(smath::is_valid_vector(L), "'log' only works on vectors with 1 to 4 components");
+		return function::one<vec, L, T, T>::apply(::std::log, v);
+	}
+
 } // namespace smath
 
-#endif
+#endif // EXPONENTIAL_H
