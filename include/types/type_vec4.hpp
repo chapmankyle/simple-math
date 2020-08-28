@@ -63,7 +63,7 @@ namespace smath {
 		SMATH_CONSTEXPR vec(A _x, B _y, C _z, D _w);
 
 		/**
-		 * Constructor to initialize a vector to another vector.
+		 * @brief Constructor to initialize a vector to another vector.
 		 * @param v The vector initialize to.
 		 */
 		SMATH_CONSTEXPR vec(const vec<4, T> &v);

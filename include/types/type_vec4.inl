@@ -44,6 +44,8 @@ namespace smath {
 		, w(static_cast<T>(v.w))
 	{}
 
+	// -- Other vectors --
+
 	template<class T>
 	SMATH_CONSTEXPR vec<4, T>::vec(const vec<1, T> &v)
 		: x(v.x)
