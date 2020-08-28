@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "include/smath.hpp"
+#include "smath/smath.hpp"
 
 /**
  * Test the smath::max function against std::max
