@@ -26,19 +26,19 @@ namespace smath {
 		// -- Constructors --
 
 		/**
-		 * Default constructor for a 3-component vector.
+		 * @brief Default constructor for a 3-component vector.
 		 */
 		SMATH_CONSTEXPR vec();
 
 		/**
-		 * Constructor to initialize a vector to a single scalar.
+		 * @brief Constructor to initialize a vector to a single scalar.
 		 * @tparam T The type of the vector.
 		 * @param scalar The scalar value to initialize the vector to.
 		 */
 		SMATH_CONSTEXPR vec(T scalar);
 
 		/**
-		 * Constructor to initialize each component in the vector.
+		 * @brief Constructor to initialize each component in the vector.
 		 * @tparam T The type of the vector.
 		 * @param _x The x component of the vector.
 		 * @param _y The y component of the vector.
@@ -47,7 +47,7 @@ namespace smath {
 		SMATH_CONSTEXPR vec(T _x, T _y, T _z);
 
 		/**
-		 * Constructor to initialize each component in the vector using
+		 * @brief Constructor to initialize each component in the vector using
 		 * different parameter types.
 		 * @tparam A Some data type that is not the same base data type.
 		 * @tparam B Some data type that is not the same base data type.
@@ -60,18 +60,37 @@ namespace smath {
 		SMATH_CONSTEXPR vec(A _x, B _y, C _z);
 
 		/**
-		 * Constructor to initialize a vector to another vector.
+		 * @brief Constructor to initialize a vector to another vector.
 		 * @param v The vector initialize to.
 		 */
 		SMATH_CONSTEXPR vec(const vec<3, T> &v);
 
 		/**
-		 * Constructor to initialize a vector to a vector from another type.
+		 * @brief Constructor to initialize a vector to a vector from another type.
 		 * @tparam A Some data type that is not the same as the base data type.
 		 * @param v The vector of a different type.
 		 */
 		template<class A>
 		SMATH_CONSTEXPR vec(const vec<3, A> &v);
+
+		// -- Other vectors --
+
+		/**
+		 * @brief Constructor to initialize a 3-component vector to a 1-component
+		 * vector.
+		 * @tparam T The type of vector to create.
+		 * @param v The 1-component vector to use for initialization.
+		 */
+		SMATH_CONSTEXPR vec(const vec<1, T> &v);
+
+		/**
+		 * @brief Constructor to initialize a 3-component vector to a 2-component
+		 * vector with a scalar as the third component.
+		 * @tparam T The type of vector to create.
+		 * @param v The 2-component vector to use for initialization.
+		 * @param scalar The scalar to initialize the third component to.
+		 */
+		SMATH_CONSTEXPR vec(const vec<2, T> &v, T scalar);
 
 		// -- Element accesses --
 
@@ -249,4 +268,4 @@ namespace smath {
 
 #include "type_vec3.inl"
 
-#endif
+#endif // TYPE_VEC3_H

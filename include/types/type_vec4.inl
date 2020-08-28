@@ -44,6 +44,24 @@ namespace smath {
 		, w(static_cast<T>(v.w))
 	{}
 
+	// -- Other vectors --
+
+	template<class T>
+	SMATH_CONSTEXPR vec<4, T>::vec(const vec<1, T> &v)
+		: x(v.x)
+		, y(v.x)
+		, z(v.x)
+		, w(v.x)
+	{}
+
+	template<class T>
+	SMATH_CONSTEXPR vec<4, T>::vec(const vec<3, T> &v, T scalar)
+		: x(v.x)
+		, y(v.y)
+		, z(v.z)
+		, w(scalar)
+	{}
+
 	// -- Element Accesses --
 
 	template<class T>
@@ -684,7 +702,7 @@ namespace smath {
 
 	template<class T>
 	SMATH_CONSTEXPR std::ostream& operator<<(std::ostream &out, const vec<4, T> &v) {
-		out << '(' << v.x << ", " << v.y << ", " << v.z << ')';
+		out << '(' << v.x << ", " << v.y << ", " << v.z << ", " << v.w << ')';
 		return out;
 	}
 

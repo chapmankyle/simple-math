@@ -40,6 +40,20 @@ namespace smath {
 		, y(static_cast<T>(v.y))
 	{}
 
+	// -- Other vectors --
+
+	template<class T>
+	SMATH_CONSTEXPR vec<2, T>::vec(const vec<1, T> &v)
+		: x(v.x)
+		, y(v.x)
+	{}
+
+	template<class T>
+	SMATH_CONSTEXPR vec<2, T>::vec(const vec<1, T> &v, T scalar)
+		: x(v.x)
+		, y(scalar)
+	{}
+
 	// -- Element Accesses --
 
 	template<class T>
