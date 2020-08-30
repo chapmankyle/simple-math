@@ -242,25 +242,52 @@ void test_vec2() {
  * Test my implementation of 3-component vectors.
  */
 void test_vec3() {
-	std::cout << "-------- VECTOR 3f --------\n";
-	smath::vec3 A{ 4.2f, 0.05f, 8.12f };
-	smath::vec3 B{ 8.9f, 1.1f, 3.14f };
+	std::cout << "\033[32m-- smath::vec3 --\033[0m\n";
+	using v3 = smath::vec3;
+	using v3d = smath::vec3d;
+	using v3i = smath::vec3i;
 
-	smath::vec3 C{ B };
-	C += A;
+	SMATH_STATIC_ASSERT((v3{ 1.5f, 2.6f, 1.2f } + v3{ 5.f, 3.f, 1.2f } == v3{ 6.5f, 5.6f, 2.4f }), "Failed vec3f addition with vec3f");
+	SMATH_STATIC_ASSERT((v3{ 1.5f, 2.6f, 1.2f } + 2.f == v3{ 3.5f, 4.6f, 3.2f }), "Failed vec3f addition with scalar");
+	SMATH_STATIC_ASSERT((2.f + v3{ 1.5f, 2.6f, 1.2f } == v3{ 3.5f, 4.6f, 3.2f }), "Failed scalar addition with vec3f");
 
-	std::cout << A.size() << '\n';
-	std::cout << A[0] << '\n';
+	SMATH_STATIC_ASSERT((v3d{ 1.5, 2.6, 1.2 } + v3d{ 5.0, 3.0, 1.2 } == v3d{ 6.5, 5.6, 2.4 }), "Failed vec3d addition with vec3d");
+	SMATH_STATIC_ASSERT((v3d{ 1.5, 2.6, 1.2 } + 2.0 == v3d{ 3.5, 4.6, 3.2 }), "Failed vec3d addition with scalar");
+	SMATH_STATIC_ASSERT((2.0 + v3d{ 1.5, 2.6, 0.1 } == v3d{ 3.5, 4.6, 2.1 }), "Failed scalar addition with vec3d");
 
-	std::cout << B[0] << '\n';
-	std::cout << C << '\n';
+	SMATH_STATIC_ASSERT((v3i{ 1, 2, 3 } + v3i{ 5, 3, 1 } == v3i{ 6, 5, 4 }), "Failed vec3i addition with vec3i");
+	SMATH_STATIC_ASSERT((v3i{ 1, 2, 3 } + 2 == v3i{ 3, 4, 5 }), "Failed vec3i addition with scalar");
+	SMATH_STATIC_ASSERT((2 + v3i{ 1, 2, 3 } == v3i{ 3, 4, 5 }), "Failed scalar addition with vec3i");
 
-	smath::vec3 D{ B * C };
-	std::cout << D << '\n';
+	SMATH_STATIC_ASSERT((v3{ 2.5f, 4.f, 3.f } * v3{ 2.f, 2.f, 3.f } == v3{ 5.f, 8.f, 9.f }), "Failed vec3f multiplication with vec3f");
+	SMATH_STATIC_ASSERT((v3{ 2.5f, 4.f, 3.f } * 2.f == v3{ 5.f, 8.f, 6.f }), "Failed vec3f multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.f * v3{ 2.5f, 4.f, 3.f } == v3{ 5.f, 8.f, 6.f }), "Failed scalar multiplication with vec3f");
 
-	smath::vec3 E{ 1.0f / B };
-	std::cout << E << '\n';
-	std::cout << '\n';
+	SMATH_STATIC_ASSERT((v3d{ 2.5, 4.0, 3.0 } * v3d{ 2.0, 2.0, 3.0 } == v3d{ 5.0, 8.0, 9.0 }), "Failed vec3d multiplication with vec3d");
+	SMATH_STATIC_ASSERT((v3d{ 2.5, 4.0, 3.0 } * 2.0 == v3d{ 5.0, 8.0, 6.0 }), "Failed vec3d multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.0 * v3d{ 2.5, 4.0, 3.0 } == v3d{ 5.0, 8.0, 6.0 }), "Failed scalar multiplication with vec3d");
+
+	SMATH_STATIC_ASSERT((v3i{ 2, 4, 3 } * v3i{ 2, 2, 3 } == v3i{ 4, 8, 9 }), "Failed vec3i multiplication with vec3i");
+	SMATH_STATIC_ASSERT((v3i{ 2, 4, 3 } * 2 == v3i{ 4, 8, 6 }), "Failed vec3i multiplication with scalar");
+	SMATH_STATIC_ASSERT((2 * v3i{ 2, 4, 3 } == v3i{ 4, 8, 6 }), "Failed scalar multiplication with vec3i");
+
+	SMATH_STATIC_ASSERT(v3{}.size() == 3, "Failed size of vec3f");
+	SMATH_STATIC_ASSERT(v3d{}.size() == 3, "Failed size of vec3d");
+	SMATH_STATIC_ASSERT(v3i{}.size() == 3, "Failed size of vec3i");
+
+	SMATH_STATIC_ASSERT((v3{ 1.2f, 2.3f, 3.4f }[0] == 1.2f), "Failed vec3f access at 0");
+	SMATH_STATIC_ASSERT((v3{ 1.2f, 2.3f, 3.4f }[1] == 2.3f), "Failed vec3f access at 1");
+	SMATH_STATIC_ASSERT((v3{ 1.2f, 2.3f, 3.4f }[2] == 3.4f), "Failed vec3f access at 2");
+
+	SMATH_STATIC_ASSERT((v3d{ 1.2, 2.3, 3.4 }[0] == 1.2), "Failed vec3d access at 0");
+	SMATH_STATIC_ASSERT((v3d{ 1.2, 2.3, 3.4 }[1] == 2.3), "Failed vec3d access at 1");
+	SMATH_STATIC_ASSERT((v3d{ 1.2, 2.3, 3.4 }[2] == 3.4), "Failed vec3d access at 2");
+
+	SMATH_STATIC_ASSERT((v3i{ 1, 2, 3 }[0] == 1), "Failed vec3i access at 0");
+	SMATH_STATIC_ASSERT((v3i{ 1, 2, 3 }[1] == 2), "Failed vec3i access at 1");
+	SMATH_STATIC_ASSERT((v3i{ 1, 2, 3 }[2] == 3), "Failed vec3i access at 2");
+
+	std::cout << "Passed\n\n";
 }
 
 /**
