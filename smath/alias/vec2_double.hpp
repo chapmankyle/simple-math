@@ -3,7 +3,7 @@
 #ifndef ALIAS_VEC2_DOUBLE_H
 #define ALIAS_VEC2_DOUBLE_H
 
-#include "../detail/type_vec2.hpp"
+#include "../types/type_vec2.hpp"
 
 namespace smath {
 

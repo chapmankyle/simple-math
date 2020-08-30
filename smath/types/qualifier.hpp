@@ -1,15 +1,19 @@
 #pragma once
 
-#ifndef DETAIL_QUALIFIER_H
-#define DETAIL_QUALIFIER_H
+#ifndef QUALIFIER_H
+#define QUALIFIER_H
 
 #include <cassert>
+#include <iostream>
+
+#include "../detail/setup.hpp"
 
 namespace smath {
 
 	// ---------------
 	// --- vectors ---
 	// ---------------
+
 	// Supports:
 	// - 2 components (x, y)
 	// - 3 components (x, y, z)
@@ -17,11 +21,11 @@ namespace smath {
 
 	/**
 	 * General vector of arbitrary length and type.
-	 * @tparam L The length of the vector, in range [2, 4]
-	 * @tparam T The type of data to store in the vector (float, double or integer)
+	 * @tparam L The length of the vector, in range [1, 4]
+	 * @tparam T The type of data to store in the vector (bool, int, float or double)
 	 */
-	template<int L, class T> struct vec;
+	template<length_t L, class T> struct vec;
 
 } // namespace smath
 
-#endif
+#endif // QUALIFIER_H
