@@ -253,7 +253,7 @@ void test_vec3() {
 
 	SMATH_STATIC_ASSERT((v3d{ 1.5, 2.6, 1.2 } + v3d{ 5.0, 3.0, 1.2 } == v3d{ 6.5, 5.6, 2.4 }), "Failed vec3d addition with vec3d");
 	SMATH_STATIC_ASSERT((v3d{ 1.5, 2.6, 1.2 } + 2.0 == v3d{ 3.5, 4.6, 3.2 }), "Failed vec3d addition with scalar");
-	SMATH_STATIC_ASSERT((2.0 + v3d{ 1.5, 2.6, 0.1 } == v3d{ 3.5, 4.6, 2.1 }), "Failed scalar addition with vec3d");
+	SMATH_STATIC_ASSERT((2.0 + v3d{ 1.5, 2.6, 1.2 } == v3d{ 3.5, 4.6, 3.2 }), "Failed scalar addition with vec3d");
 
 	SMATH_STATIC_ASSERT((v3i{ 1, 2, 3 } + v3i{ 5, 3, 1 } == v3i{ 6, 5, 4 }), "Failed vec3i addition with vec3i");
 	SMATH_STATIC_ASSERT((v3i{ 1, 2, 3 } + 2 == v3i{ 3, 4, 5 }), "Failed vec3i addition with scalar");
@@ -290,6 +290,61 @@ void test_vec3() {
 	std::cout << "Passed\n\n";
 }
 
+/*
+ * Test my implementation of 4-component vectors.
+ */
+void test_vec4() {
+	std::cout << "\033[32m-- smath::vec4 --\033[0m\n";
+	using v4 = smath::vec4;
+	using v4d = smath::vec4d;
+	using v4i = smath::vec4i;
+
+	SMATH_STATIC_ASSERT((v4{ 1.5f, 2.6f, 1.2f, 0.1f } + v4{ 5.f, 3.f, 1.2f, 1.1f } == v4{ 6.5f, 5.6f, 2.4f, 1.2f }), "Failed vec4f addition with vec4f");
+	SMATH_STATIC_ASSERT((v4{ 1.5f, 2.6f, 1.2f, 0.1f } + 2.f == v4{ 3.5f, 4.6f, 3.2f, 2.1f }), "Failed vec4f addition with scalar");
+	SMATH_STATIC_ASSERT((2.f + v4{ 1.5f, 2.6f, 1.2f, 0.1f } == v4{ 3.5f, 4.6f, 3.2f, 2.1f }), "Failed scalar addition with vec4f");
+
+	SMATH_STATIC_ASSERT((v4d{ 1.5, 2.6, 1.2, 0.4 } + v4d{ 5.0, 3.0, 1.2, 0.4 } == v4d{ 6.5, 5.6, 2.4, 0.8 }), "Failed vec4d addition with vec4d");
+	SMATH_STATIC_ASSERT((v4d{ 1.5, 2.6, 1.2, 0.4 } + 2.0 == v4d{ 3.5, 4.6, 3.2, 2.4 }), "Failed vec4d addition with scalar");
+	SMATH_STATIC_ASSERT((2.0 + v4d{ 1.5, 2.6, 1.2, 0.4 } == v4d{ 3.5, 4.6, 3.2, 2.4 }), "Failed scalar addition with vec4d");
+
+	SMATH_STATIC_ASSERT((v4i{ 1, 2, 3, 4 } + v4i{ 5, 3, 1, 2 } == v4i{ 6, 5, 4, 6 }), "Failed vec4i addition with vec4i");
+	SMATH_STATIC_ASSERT((v4i{ 1, 2, 3, 4 } + 2 == v4i{ 3, 4, 5, 6 }), "Failed vec4i addition with scalar");
+	SMATH_STATIC_ASSERT((2 + v4i{ 1, 2, 3, 4 } == v4i{ 3, 4, 5, 6 }), "Failed scalar addition with vec4i");
+
+	SMATH_STATIC_ASSERT((v4{ 2.5f, 4.f, 3.f, 1.5f } * v4{ 2.f, 2.f, 3.f, 2.f } == v4{ 5.f, 8.f, 9.f, 3.f }), "Failed vec4f multiplication with vec4f");
+	SMATH_STATIC_ASSERT((v4{ 2.5f, 4.f, 3.f, 1.5f } * 2.f == v4{ 5.f, 8.f, 6.f, 3.f }), "Failed vec4f multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.f * v4{ 2.5f, 4.f, 3.f, 1.5f } == v4{ 5.f, 8.f, 6.f, 3.f }), "Failed scalar multiplication with vec4f");
+
+	SMATH_STATIC_ASSERT((v4d{ 2.5, 4.0, 3.0, 1.5 } * v4d{ 2.0, 2.0, 3.0, 2.0 } == v4d{ 5.0, 8.0, 9.0, 3.0 }), "Failed vec4d multiplication with vec4d");
+	SMATH_STATIC_ASSERT((v4d{ 2.5, 4.0, 3.0, 1.5 } * 2.0 == v4d{ 5.0, 8.0, 6.0, 3.0 }), "Failed vec4d multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.0 * v4d{ 2.5, 4.0, 3.0, 1.5 } == v4d{ 5.0, 8.0, 6.0, 3.0 }), "Failed scalar multiplication with vec4d");
+
+	SMATH_STATIC_ASSERT((v4i{ 2, 4, 3, 1 } * v4i{ 2, 2, 3, 1 } == v4i{ 4, 8, 9, 1 }), "Failed vec4i multiplication with vec4i");
+	SMATH_STATIC_ASSERT((v4i{ 2, 4, 3, 1 } * 2 == v4i{ 4, 8, 6, 2 }), "Failed vec4i multiplication with scalar");
+	SMATH_STATIC_ASSERT((2 * v4i{ 2, 4, 3, 1 } == v4i{ 4, 8, 6, 2 }), "Failed scalar multiplication with vec4i");
+
+	SMATH_STATIC_ASSERT(v4{}.size() == 4, "Failed size of vec4f");
+	SMATH_STATIC_ASSERT(v4d{}.size() == 4, "Failed size of vec4d");
+	SMATH_STATIC_ASSERT(v4i{}.size() == 4, "Failed size of vec4i");
+
+	SMATH_STATIC_ASSERT((v4{ 1.2f, 2.3f, 3.4f, 0.1f }[0] == 1.2f), "Failed vec4f access at 0");
+	SMATH_STATIC_ASSERT((v4{ 1.2f, 2.3f, 3.4f, 0.1f }[1] == 2.3f), "Failed vec4f access at 1");
+	SMATH_STATIC_ASSERT((v4{ 1.2f, 2.3f, 3.4f, 0.1f }[2] == 3.4f), "Failed vec4f access at 2");
+	SMATH_STATIC_ASSERT((v4{ 1.2f, 2.3f, 3.4f, 0.1f }[3] == 0.1f), "Failed vec4f access at 3");
+
+	SMATH_STATIC_ASSERT((v4d{ 1.2, 2.3, 3.4, 0.1 }[0] == 1.2), "Failed vec4d access at 0");
+	SMATH_STATIC_ASSERT((v4d{ 1.2, 2.3, 3.4, 0.1 }[1] == 2.3), "Failed vec4d access at 1");
+	SMATH_STATIC_ASSERT((v4d{ 1.2, 2.3, 3.4, 0.1 }[2] == 3.4), "Failed vec4d access at 2");
+	SMATH_STATIC_ASSERT((v4d{ 1.2, 2.3, 3.4, 0.1 }[3] == 0.1), "Failed vec4d access at 3");
+
+	SMATH_STATIC_ASSERT((v4i{ 1, 2, 3, 4 }[0] == 1), "Failed vec4i access at 0");
+	SMATH_STATIC_ASSERT((v4i{ 1, 2, 3, 4 }[1] == 2), "Failed vec4i access at 1");
+	SMATH_STATIC_ASSERT((v4i{ 1, 2, 3, 4 }[2] == 3), "Failed vec4i access at 2");
+	SMATH_STATIC_ASSERT((v4i{ 1, 2, 3, 4 }[3] == 4), "Failed vec4i access at 3");
+
+	std::cout << "Passed\n\n";
+}
+
 /**
  * Test the differences between the constants
  */
@@ -321,6 +376,7 @@ int main() {
 	test_vec1();
 	test_vec2();
 	test_vec3();
+	test_vec4();
 	test_consts();
 
 	return 0;
