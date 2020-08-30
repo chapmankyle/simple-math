@@ -22,7 +22,7 @@ cd smath
 ```
 
 ## Usage :page_with_curl:
-You can use the headers by simplying copying the `smath` folder into your project
+You can use the headers by simply copying the `smath` folder into your project
 root folder. Example:
 ```c++
 #include "smath/smath.hpp" // for all features
