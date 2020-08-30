@@ -38,6 +38,14 @@ namespace smath {
 		SMATH_CONSTEXPR vec(T scalar);
 
 		/**
+		 * @brief Constructor to initialize a vector to an x and y, setting z to 0.
+		 * @tparam T The type of the vector.
+		 * @param _x The x component of the vector.
+		 * @param _y The y component of the vector.
+		 */
+		SMATH_CONSTEXPR vec(T _x, T _y);
+
+		/**
 		 * @brief Constructor to initialize each component in the vector.
 		 * @tparam T The type of the vector.
 		 * @param _x The x component of the vector.
@@ -45,6 +53,17 @@ namespace smath {
 		 * @param _z The z component of the vector.
 		 */
 		SMATH_CONSTEXPR vec(T _x, T _y, T _z);
+
+		/**
+		 * @brief Constructor to initialize the x and y components in the vector
+		 * using different parameter types, and setting z to 0.
+		 * @tparam A Some data type that is not the same base data type.
+		 * @tparam B Some data type that is not the same base data type.
+		 * @param _x The x component of the vector.
+		 * @param _y The y component of the vector.
+		 */
+		template<class A, class B>
+		SMATH_CONSTEXPR vec(A _x, B _y);
 
 		/**
 		 * @brief Constructor to initialize each component in the vector using

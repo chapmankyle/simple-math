@@ -17,8 +17,21 @@ namespace smath {
 	{}
 
 	template<class T>
+	SMATH_CONSTEXPR vec<3, T>::vec(T _x, T _y)
+		: x(_x), y(_y), z(static_cast<T>(0))
+	{}
+
+	template<class T>
 	SMATH_CONSTEXPR vec<3, T>::vec(T _x, T _y, T _z)
 		: x(_x), y(_y), z(_z)
+	{}
+
+	template<class T>
+	template<class A, class B>
+	SMATH_CONSTEXPR vec<3, T>::vec(A _x, B _y)
+		: x(static_cast<T>(_x))
+		, y(static_cast<T>(_y))
+		, z(static_cast<T>(0))
 	{}
 
 	template<class T>
