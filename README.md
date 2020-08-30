@@ -28,26 +28,26 @@ root folder. Example:
 #include "smath/smath.hpp" // for all features
 
 int main() {
-	// create 3-component vectors
-	smath::vec3 A{ 16.f, 4.f, 64.f };
-	smath::vec3 B{ -4.6f, 2.f, 3.5f };
+    // create 3-component vectors
+    smath::vec3 A{ 16.f, 4.f, 64.f };
+    smath::vec3 B{ -4.6f, 2.f, 3.5f };
 
-	// apply functions to vectors
-	smath::vec3 C{ smath::sqrt(A) };
-	smath::vec3 D{ smath::abs(B) };
+    // apply functions to vectors
+    smath::vec3 C{ smath::sqrt(A) };
+    smath::vec3 D{ smath::abs(B) };
 
-	// perform arithmetic operations on vectors
-	smath::vec3 E{ C + D };
-	smath::vec3 F{ 1.f / (A - D) };
+    // perform arithmetic operations on vectors
+    smath::vec3 E{ C + D };
+    smath::vec3 F{ 1.f / (A - D) };
 
-	// use constants
-	float f_pi = smath::constants::pi;
-	double d_pi = smath::constants::pi;
+    // use constants
+    float f_pi = smath::constants::pi;
+    double d_pi = smath::constants::pi;
 
-	// convert between radians and degrees
-	float rad = smath::radians(90.f);
-	double deg = smath::degrees(d_pi);
+    // convert between radians and degrees
+    float rad = smath::radians(90.f);
+    double deg = smath::degrees(d_pi);
 
-	return 0;
+    return 0;
 }
 ```
