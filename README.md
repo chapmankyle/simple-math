@@ -1,7 +1,8 @@
 <h1 align="center">smath</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/chapmankyle/simple-math.svg?" alt="license: GPL-3.0"></img>
+  <img src="https://img.shields.io/github/license/chapmankyle/smath.svg?" alt="license: GPL-3.0"></img>
+  <img src="https://img.shields.io/github/v/release/chapmankyle/smath.svg?" alt="Release"></img>
 </p>
 
 A header-only C++ math library designed for use in graphics software :tv: :art:
