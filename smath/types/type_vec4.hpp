@@ -39,6 +39,25 @@ namespace smath {
 		SMATH_CONSTEXPR vec(T scalar);
 
 		/**
+		 * @brief Constructor to initialize a vector to an x and y, setting z
+		 * and w to 0.
+		 * @tparam T The type of the vector.
+		 * @param _x The x component of the vector.
+		 * @param _y The y component of the vector.
+		 */
+		SMATH_CONSTEXPR vec(T _x, T _y);
+
+		/**
+		 * @brief Constructor to initialize a vector to an x, y and z, setting w
+		 * to 0.
+		 * @tparam T The type of the vector.
+		 * @param _x The x component of the vector.
+		 * @param _y The y component of the vector.
+		 * @param _z The y component of the vector.
+		 */
+		SMATH_CONSTEXPR vec(T _x, T _y, T _z);
+
+		/**
 		 * @brief Constructor to initialize each component in the vector.
 		 * @tparam T The type of the vector.
 		 * @param _x The x component of the vector.
@@ -47,6 +66,30 @@ namespace smath {
 		 * @param _w The w component of the vector.
 		 */
 		SMATH_CONSTEXPR vec(T _x, T _y, T _z, T _w);
+
+		/**
+		 * @brief Constructor to initialize the x and y components in the vector
+		 * using different parameter types, setting z and w to 0
+		 * @tparam A Some data type that is not the same base data type.
+		 * @tparam B Some data type that is not the same base data type.
+		 * @param _x The x component of the vector.
+		 * @param _y The y component of the vector.
+		 */
+		template<class A, class B>
+		SMATH_CONSTEXPR vec(A _x, B _y);
+
+		/**
+		 * @brief Constructor to initialize the x, y and z components in the vector
+		 * using different parameter types, setting w to 0
+		 * @tparam A Some data type that is not the same base data type.
+		 * @tparam B Some data type that is not the same base data type.
+		 * @tparam C Some data type that is not the same base data type.
+		 * @param _x The x component of the vector.
+		 * @param _y The y component of the vector.
+		 * @param _z The z component of the vector.
+		 */
+		template<class A, class B, class C>
+		SMATH_CONSTEXPR vec(A _x, B _y, C _z);
 
 		/**
 		 * @brief Constructor to initialize each component in the vector using
@@ -58,6 +101,7 @@ namespace smath {
 		 * @param _x The x component of the vector.
 		 * @param _y The y component of the vector.
 		 * @param _z The z component of the vector.
+		 * @param _w The w component of the vector.
 		 */
 		template<class A, class B, class C, class D>
 		SMATH_CONSTEXPR vec(A _x, B _y, C _z, D _w);
