@@ -146,29 +146,96 @@ void test_scale() {
 }
 
 /**
+ * Test my implementation of 1-component vectors.
+ */
+void test_vec1() {
+	std::cout << "\033[32m-- smath::vec1 --\033[0m\n";
+	using v1 = smath::vec1;
+	using v1d = smath::vec1d;
+	using v1i = smath::vec1i;
+
+	SMATH_STATIC_ASSERT((v1{ 1.5f } + v1{ 5.f } == v1{ 6.5f }), "Failed vec1f addition with vec1f");
+	SMATH_STATIC_ASSERT((v1{ 1.5f } + 2.f == v1{ 3.5f }), "Failed vec1f addition with scalar");
+	SMATH_STATIC_ASSERT((2.f + v1{ 1.5f } == v1{ 3.5f }), "Failed scalar addition with vec1f");
+
+	SMATH_STATIC_ASSERT((v1d{ 1.5 } + v1d{ 5.0 } == v1d{ 6.5 }), "Failed vec1d addition with vec1d");
+	SMATH_STATIC_ASSERT((v1d{ 1.5 } + 2.0 == v1d{ 3.5 }), "Failed vec1d addition with scalar");
+	SMATH_STATIC_ASSERT((2.0 + v1d{ 1.5 } == v1d{ 3.5 }), "Failed scalar addition with vec1d");
+
+	SMATH_STATIC_ASSERT((v1i{ 1 } + v1i{ 5 } == v1i{ 6 }), "Failed vec1i addition with vec1i");
+	SMATH_STATIC_ASSERT((v1i{ 1 } + 2 == v1i{ 3 }), "Failed vec1i addition with scalar");
+	SMATH_STATIC_ASSERT((2 + v1i{ 1 } == v1i{ 3 }), "Failed scalar addition with vec1i");
+
+	SMATH_STATIC_ASSERT((v1{ 2.5f } * v1{ 2.f } == v1{ 5.f }), "Failed vec1f multiplication with vec1f");
+	SMATH_STATIC_ASSERT((v1{ 2.5f } * 2.f == v1{ 5.f }), "Failed vec1f multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.f * v1{ 2.5f } == v1{ 5.f }), "Failed scalar multiplication with vec1f");
+
+	SMATH_STATIC_ASSERT((v1d{ 2.5 } * v1d{ 2.0 } == v1d{ 5.0 }), "Failed vec1d multiplication with vec1d");
+	SMATH_STATIC_ASSERT((v1d{ 2.5 } * 2.0 == v1d{ 5.0 }), "Failed vec1d multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.0 * v1d{ 2.5 } == v1d{ 5.0 }), "Failed scalar multiplication with vec1d");
+
+	SMATH_STATIC_ASSERT((v1i{ 2 } * v1i{ 2 } == v1i{ 4 }), "Failed vec1i multiplication with vec1i");
+	SMATH_STATIC_ASSERT((v1i{ 2 } * 2 == v1i{ 4 }), "Failed vec1i multiplication with scalar");
+	SMATH_STATIC_ASSERT((2 * v1i{ 2 } == v1i{ 4 }), "Failed scalar multiplication with vec1i");
+
+	SMATH_STATIC_ASSERT(v1{}.size() == 1, "Failed size of vec1f");
+	SMATH_STATIC_ASSERT(v1d{}.size() == 1, "Failed size of vec1d");
+	SMATH_STATIC_ASSERT(v1i{}.size() == 1, "Failed size of vec1i");
+
+	SMATH_STATIC_ASSERT((v1{ 1.2f }[0] == 1.2f), "Failed vec1f access at 0");
+	SMATH_STATIC_ASSERT((v1d{ 1.2 }[0] == 1.2), "Failed vec1d access at 0");
+	SMATH_STATIC_ASSERT((v1i{ 1 }[0] == 1), "Failed vec1i access at 0");
+
+	std::cout << "Passed\n\n";
+}
+
+/**
  * Test my implementation of 2-component vectors.
  */
 void test_vec2() {
-	std::cout << "-------- VECTOR 2f --------\n";
+	std::cout << "\033[32m-- smath::vec2 --\033[0m\n";
+	using v2 = smath::vec2;
+	using v2d = smath::vec2d;
+	using v2i = smath::vec2i;
 
-	smath::vec2 A{ 4.2f, 0.05f };
-	smath::vec2 B{ 8.9f, 1.1f };
+	SMATH_STATIC_ASSERT((v2{ 1.5f, 2.6f } + v2{ 5.f, 3.f } == v2{ 6.5f, 5.6f }), "Failed vec2f addition with vec2f");
+	SMATH_STATIC_ASSERT((v2{ 1.5f, 2.6f } + 2.f == v2{ 3.5f, 4.6f }), "Failed vec2f addition with scalar");
+	SMATH_STATIC_ASSERT((2.f + v2{ 1.5f, 2.6f } == v2{ 3.5f, 4.6f }), "Failed scalar addition with vec2f");
 
-	smath::vec2 C{ B };
-	C += A;
+	SMATH_STATIC_ASSERT((v2d{ 1.5, 2.6 } + v2d{ 5.0, 3.0 } == v2d{ 6.5, 5.6 }), "Failed vec2d addition with vec2d");
+	SMATH_STATIC_ASSERT((v2d{ 1.5, 2.6 } + 2.0 == v2d{ 3.5, 4.6 }), "Failed vec2d addition with scalar");
+	SMATH_STATIC_ASSERT((2.0 + v2d{ 1.5, 2.6 } == v2d{ 3.5, 4.6 }), "Failed scalar addition with vec2d");
 
-	std::cout << A.size() << '\n';
-	std::cout << A[0] << '\n';
+	SMATH_STATIC_ASSERT((v2i{ 1, 2 } + v2i{ 5, 3 } == v2i{ 6, 5 }), "Failed vec2i addition with vec2i");
+	SMATH_STATIC_ASSERT((v2i{ 1, 2 } + 2 == v2i{ 3, 4 }), "Failed vec2i addition with scalar");
+	SMATH_STATIC_ASSERT((2 + v2i{ 1, 2 } == v2i{ 3, 4 }), "Failed scalar addition with vec2i");
 
-	std::cout << B[0] << '\n';
-	std::cout << C << '\n';
+	SMATH_STATIC_ASSERT((v2{ 2.5f, 4.f } * v2{ 2.f, 2.f } == v2{ 5.f, 8.f }), "Failed vec2f multiplication with vec2f");
+	SMATH_STATIC_ASSERT((v2{ 2.5f, 4.f } * 2.f == v2{ 5.f, 8.f }), "Failed vec2f multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.f * v2{ 2.5f, 4.f } == v2{ 5.f, 8.f }), "Failed scalar multiplication with vec2f");
 
-	smath::vec2 D{ B * C };
-	std::cout << D << '\n';
+	SMATH_STATIC_ASSERT((v2d{ 2.5, 4.0 } * v2d{ 2.0, 2.0 } == v2d{ 5.0, 8.0 }), "Failed vec2d multiplication with vec2d");
+	SMATH_STATIC_ASSERT((v2d{ 2.5, 4.0 } * 2.0 == v2d{ 5.0, 8.0 }), "Failed vec2d multiplication with scalar");
+	SMATH_STATIC_ASSERT((2.0 * v2d{ 2.5, 4.0 } == v2d{ 5.0, 8.0 }), "Failed scalar multiplication with vec2d");
 
-	smath::vec2 E{ 1.0f / B };
-	std::cout << E << '\n';
-	std::cout << '\n';
+	SMATH_STATIC_ASSERT((v2i{ 2, 4 } * v2i{ 2, 2 } == v2i{ 4, 8 }), "Failed vec2i multiplication with vec2i");
+	SMATH_STATIC_ASSERT((v2i{ 2, 4 } * 2 == v2i{ 4, 8 }), "Failed vec2i multiplication with scalar");
+	SMATH_STATIC_ASSERT((2 * v2i{ 2, 4 } == v2i{ 4, 8 }), "Failed scalar multiplication with vec2i");
+
+	SMATH_STATIC_ASSERT(v2{}.size() == 2, "Failed size of vec2f");
+	SMATH_STATIC_ASSERT(v2d{}.size() == 2, "Failed size of vec2d");
+	SMATH_STATIC_ASSERT(v2i{}.size() == 2, "Failed size of vec2i");
+
+	SMATH_STATIC_ASSERT((v2{ 1.2f, 2.3f }[0] == 1.2f), "Failed vec2f access at 0");
+	SMATH_STATIC_ASSERT((v2{ 1.2f, 2.3f }[1] == 2.3f), "Failed vec2f access at 1");
+
+	SMATH_STATIC_ASSERT((v2d{ 1.2, 2.3 }[0] == 1.2), "Failed vec2d access at 0");
+	SMATH_STATIC_ASSERT((v2d{ 1.2, 2.3 }[1] == 2.3), "Failed vec2d access at 1");
+
+	SMATH_STATIC_ASSERT((v2i{ 1, 2 }[0] == 1), "Failed vec2i access at 0");
+	SMATH_STATIC_ASSERT((v2i{ 1, 2 }[1] == 2), "Failed vec2i access at 1");
+
+	std::cout << "Passed\n\n";
 }
 
 /**
@@ -200,13 +267,12 @@ void test_vec3() {
  * Test the differences between the constants
  */
 void test_consts() {
-	std::cout << "-------- CONSTS --------\n";
-	std::cout << smath::constants::PI << '\n';
-	std::cout << M_PI << '\n';
+	std::cout << "\033[32m-- smath::constants --\033[0m\n";
 
-	std::cout << smath::constants::E << '\n';
-	std::cout << M_E << '\n';
-	std::cout << '\n';
+	SMATH_STATIC_ASSERT(static_cast<float>(smath::constants::PI) == static_cast<float>(M_PI), "Failed PI constant");
+	SMATH_STATIC_ASSERT(static_cast<float>(smath::constants::E) == static_cast<float>(M_E), "Failed E constant");
+
+	std::cout << "Passed\n\n";
 }
 
 /**
@@ -225,6 +291,7 @@ int main() {
 	test_ceil();
 	test_convert_radians_degrees();
 	test_scale();
+	test_vec1();
 	test_vec2();
 	test_vec3();
 	test_consts();
