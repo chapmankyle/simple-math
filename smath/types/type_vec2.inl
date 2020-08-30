@@ -7,44 +7,58 @@ namespace smath {
 	// -- Constructors --
 
 	template<class T>
-	constexpr vec<2, T>::vec()
+	SMATH_CONSTEXPR vec<2, T>::vec()
 		: x{}, y{}
 	{}
 
 	template<class T>
-	constexpr vec<2, T>::vec(T scalar)
+	SMATH_CONSTEXPR vec<2, T>::vec(T scalar)
 		: x(scalar), y(scalar)
 	{}
 
 	template<class T>
-	constexpr vec<2, T>::vec(T _x, T _y)
+	SMATH_CONSTEXPR vec<2, T>::vec(T _x, T _y)
 		: x(_x), y(_y)
 	{}
 
 	template<class T>
 	template<class A, class B>
-	constexpr vec<2, T>::vec(A _x, B _y)
+	SMATH_CONSTEXPR vec<2, T>::vec(A _x, B _y)
 		: x(static_cast<T>(_x))
 		, y(static_cast<T>(_y))
 	{}
 
 	template<class T>
-	constexpr vec<2, T>::vec(const vec<2, T> &v)
+	SMATH_CONSTEXPR vec<2, T>::vec(const vec<2, T> &v)
 		: x(v.x), y(v.y)
 	{}
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>::vec(const vec<2, A> &v)
+	SMATH_CONSTEXPR vec<2, T>::vec(const vec<2, A> &v)
 		: x(static_cast<T>(v.x))
 		, y(static_cast<T>(v.y))
+	{}
+
+	// -- Other vectors --
+
+	template<class T>
+	SMATH_CONSTEXPR vec<2, T>::vec(const vec<1, T> &v)
+		: x(v.x)
+		, y(v.x)
+	{}
+
+	template<class T>
+	SMATH_CONSTEXPR vec<2, T>::vec(const vec<1, T> &v, T scalar)
+		: x(v.x)
+		, y(scalar)
 	{}
 
 	// -- Element Accesses --
 
 	template<class T>
-	constexpr T& vec<2, T>::operator[](int i) {
-		assert(i >= 0 && i < this->length());
+	SMATH_CONSTEXPR T& vec<2, T>::operator[](int i) {
+		assert(i >= 0 && i < this->size());
 		switch(i) {
 			default:
 			case 0:
@@ -55,8 +69,8 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr const T& vec<2, T>::operator[](int i) const {
-		assert(i >= 0 && i < this->length());
+	SMATH_CONSTEXPR const T& vec<2, T>::operator[](int i) const {
+		assert(i >= 0 && i < this->size());
 		switch(i) {
 			default:
 			case 0:
@@ -70,7 +84,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator=(const vec<2, A> &v) {
 		this->x = static_cast<T>(v.x);
 		this->y = static_cast<T>(v.y);
 		return *this;
@@ -78,7 +92,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator+=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator+=(A scalar) {
 		this->x += static_cast<T>(scalar);
 		this->y += static_cast<T>(scalar);
 		return *this;
@@ -86,7 +100,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator+=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator+=(const vec<2, A> &v) {
 		this->x += static_cast<T>(v.x);
 		this->y += static_cast<T>(v.y);
 		return *this;
@@ -94,7 +108,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator-=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator-=(A scalar) {
 		this->x -= static_cast<T>(scalar);
 		this->y -= static_cast<T>(scalar);
 		return *this;
@@ -102,7 +116,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator-=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator-=(const vec<2, A> &v) {
 		this->x -= static_cast<T>(v.x);
 		this->y -= static_cast<T>(v.y);
 		return *this;
@@ -110,7 +124,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator*=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator*=(A scalar) {
 		this->x *= static_cast<T>(scalar);
 		this->y *= static_cast<T>(scalar);
 		return *this;
@@ -118,7 +132,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator*=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator*=(const vec<2, A> &v) {
 		this->x *= static_cast<T>(v.x);
 		this->y *= static_cast<T>(v.y);
 		return *this;
@@ -126,7 +140,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator/=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator/=(A scalar) {
 		this->x /= static_cast<T>(scalar);
 		this->y /= static_cast<T>(scalar);
 		return *this;
@@ -134,7 +148,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator/=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator/=(const vec<2, A> &v) {
 		this->x /= static_cast<T>(v.x);
 		this->y /= static_cast<T>(v.y);
 		return *this;
@@ -144,7 +158,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator%=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator%=(A scalar) {
 		this->x %= static_cast<T>(scalar);
 		this->y %= static_cast<T>(scalar);
 		return *this;
@@ -152,7 +166,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator%=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator%=(const vec<2, A> &v) {
 		this->x %= static_cast<T>(v.x);
 		this->y %= static_cast<T>(v.y);
 		return *this;
@@ -160,7 +174,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator&=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator&=(A scalar) {
 		this->x &= static_cast<T>(scalar);
 		this->y &= static_cast<T>(scalar);
 		return *this;
@@ -168,7 +182,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator&=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator&=(const vec<2, A> &v) {
 		this->x &= static_cast<T>(v.x);
 		this->y &= static_cast<T>(v.y);
 		return *this;
@@ -176,7 +190,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator|=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator|=(A scalar) {
 		this->x |= static_cast<T>(scalar);
 		this->y |= static_cast<T>(scalar);
 		return *this;
@@ -184,7 +198,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator|=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator|=(const vec<2, A> &v) {
 		this->x |= static_cast<T>(v.x);
 		this->y |= static_cast<T>(v.y);
 		return *this;
@@ -192,7 +206,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator^=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator^=(A scalar) {
 		this->x ^= static_cast<T>(scalar);
 		this->y ^= static_cast<T>(scalar);
 		return *this;
@@ -200,7 +214,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator^=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator^=(const vec<2, A> &v) {
 		this->x ^= static_cast<T>(v.x);
 		this->y ^= static_cast<T>(v.y);
 		return *this;
@@ -208,7 +222,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator<<=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator<<=(A scalar) {
 		this->x <<= static_cast<T>(scalar);
 		this->y <<= static_cast<T>(scalar);
 		return *this;
@@ -216,7 +230,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator<<=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator<<=(const vec<2, A> &v) {
 		this->x <<= static_cast<T>(v.x);
 		this->y <<= static_cast<T>(v.y);
 		return *this;
@@ -224,7 +238,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator>>=(A scalar) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator>>=(A scalar) {
 		this->x >>= static_cast<T>(scalar);
 		this->y >>= static_cast<T>(scalar);
 		return *this;
@@ -232,7 +246,7 @@ namespace smath {
 
 	template<class T>
 	template<class A>
-	constexpr vec<2, T>& vec<2, T>::operator>>=(const vec<2, A> &v) {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator>>=(const vec<2, A> &v) {
 		this->x >>= static_cast<T>(v.x);
 		this->y >>= static_cast<T>(v.y);
 		return *this;
@@ -241,7 +255,7 @@ namespace smath {
 	// -- Increment and decrement operators --
 
 	template<class T>
-	constexpr vec<2, T>& vec<2, T>::operator++() {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator++() {
 		// allow for prefix (i.e. ++a)
 		++this->x;
 		++this->y;
@@ -249,7 +263,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> vec<2, T>::operator++(int) {
+	SMATH_CONSTEXPR vec<2, T> vec<2, T>::operator++(int) {
 		// allow for postfix (i.e. a++)
 		vec<2, T> copy(*this);
 		++*this;
@@ -257,14 +271,14 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T>& vec<2, T>::operator--() {
+	SMATH_CONSTEXPR vec<2, T>& vec<2, T>::operator--() {
 		--this->x;
 		--this->y;
 		return *this;
 	}
 
 	template<class T>
-	constexpr vec<2, T> vec<2, T>::operator--(int) {
+	SMATH_CONSTEXPR vec<2, T> vec<2, T>::operator--(int) {
 		vec<2, T> copy(*this);
 		--*this;
 		return copy;
@@ -273,19 +287,19 @@ namespace smath {
 	// -- Unary arithmetic operators --
 
 	template<class T>
-	constexpr vec<2, T> operator+(const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator+(const vec<2, T> &v) {
 		return v;
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator-(const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator-(const vec<2, T> &v) {
 		return vec<2, T>(-v.x, -v.y);
 	}
 
 	// -- Binary arithmetic operators --
 
 	template<class T>
-	constexpr vec<2, T> operator+(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator+(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x + scalar,
 			v.y + scalar
@@ -293,7 +307,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator+(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator+(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar + v.x,
 			scalar + v.y
@@ -301,7 +315,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator+(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator+(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x + v2.x,
 			v1.y + v2.y
@@ -309,7 +323,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator-(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator-(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x - scalar,
 			v.y - scalar
@@ -317,7 +331,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator-(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator-(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar - v.x,
 			scalar - v.y
@@ -325,7 +339,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator-(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator-(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x - v2.x,
 			v1.y - v2.y
@@ -333,7 +347,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator*(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator*(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x * scalar,
 			v.y * scalar
@@ -341,7 +355,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator*(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator*(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar * v.x,
 			scalar * v.y
@@ -349,7 +363,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator*(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator*(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x * v2.x,
 			v1.y * v2.y
@@ -357,7 +371,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator/(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator/(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x / scalar,
 			v.y / scalar
@@ -365,7 +379,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator/(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator/(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar / v.x,
 			scalar / v.y
@@ -373,7 +387,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator/(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator/(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x / v2.x,
 			v1.y / v2.y
@@ -381,7 +395,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator%(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator%(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x % scalar,
 			v.y % scalar
@@ -389,7 +403,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator%(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator%(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar % v.x,
 			scalar % v.y
@@ -397,7 +411,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator%(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator%(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x % v2.x,
 			v1.y % v2.y
@@ -407,7 +421,7 @@ namespace smath {
 	// -- Bitwise arithmetic operators --
 
 	template<class T>
-	constexpr vec<2, T> operator&(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator&(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x & scalar,
 			v.y & scalar
@@ -415,7 +429,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator&(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator&(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar & v.x,
 			scalar & v.y
@@ -423,7 +437,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator&(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator&(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x & v2.x,
 			v1.y & v2.y
@@ -431,7 +445,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator|(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator|(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x | scalar,
 			v.y | scalar
@@ -439,7 +453,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator|(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator|(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar | v.x,
 			scalar | v.y
@@ -447,7 +461,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator|(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator|(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x | v2.x,
 			v1.y | v2.y
@@ -455,7 +469,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator^(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator^(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x ^ scalar,
 			v.y ^ scalar
@@ -463,7 +477,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator^(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator^(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar ^ v.x,
 			scalar ^ v.y
@@ -471,7 +485,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator^(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator^(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x ^ v2.x,
 			v1.y ^ v2.y
@@ -479,7 +493,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator<<(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator<<(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x << scalar,
 			v.y << scalar
@@ -487,7 +501,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator<<(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator<<(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar << v.x,
 			scalar << v.y
@@ -495,7 +509,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator<<(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator<<(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x << v2.x,
 			v1.y << v2.y
@@ -503,7 +517,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator>>(const vec<2, T> &v, T scalar) {
+	SMATH_CONSTEXPR vec<2, T> operator>>(const vec<2, T> &v, T scalar) {
 		return vec<2, T>(
 			v.x >> scalar,
 			v.y >> scalar
@@ -511,7 +525,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator>>(T scalar, const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator>>(T scalar, const vec<2, T> &v) {
 		return vec<2, T>(
 			scalar >> v.x,
 			scalar >> v.y
@@ -519,7 +533,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator>>(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR vec<2, T> operator>>(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return vec<2, T>(
 			v1.x >> v2.x,
 			v1.y >> v2.y
@@ -527,7 +541,7 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr vec<2, T> operator~(const vec<2, T> &v) {
+	SMATH_CONSTEXPR vec<2, T> operator~(const vec<2, T> &v) {
 		return vec<2, T>(
 			~v.x,
 			~v.y
@@ -535,27 +549,33 @@ namespace smath {
 	}
 
 	template<class T>
-	constexpr bool operator==(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR bool operator==(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return v1.x == v2.x && v1.y == v2.y;
 	}
 
 	template<class T>
-	constexpr bool operator!=(const vec<2, T> &v1, const vec<2, T> &v2) {
+	SMATH_CONSTEXPR bool operator!=(const vec<2, T> &v1, const vec<2, T> &v2) {
 		return !(v1 == v2);
 	}
 
-	constexpr vec<2, bool> operator&&(const vec<2, bool> &v1, const vec<2, bool> &v2) {
+	SMATH_CONSTEXPR vec<2, bool> operator&&(const vec<2, bool> &v1, const vec<2, bool> &v2) {
 		return vec<2, bool>(
 			v1.x && v2.x,
 			v1.y && v2.y
 		);
 	}
 
-	constexpr vec<2, bool> operator||(const vec<2, bool> &v1, const vec<2, bool> &v2) {
+	SMATH_CONSTEXPR vec<2, bool> operator||(const vec<2, bool> &v1, const vec<2, bool> &v2) {
 		return vec<2, bool>(
 			v1.x || v2.x,
 			v1.y || v2.y
 		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR std::ostream& operator<<(std::ostream &out, const vec<2, T> &v) {
+		out << '(' << v.x << ", " << v.y << ')';
+		return out;
 	}
 
 } // namespace smath

@@ -3,7 +3,7 @@
 #ifndef ALIAS_VEC2_INTEGER_H
 #define ALIAS_VEC2_INTEGER_H
 
-#include "../detail/type_vec2.hpp"
+#include "../types/type_vec2.hpp"
 
 namespace smath {
 
