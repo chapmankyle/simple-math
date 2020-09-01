@@ -8,7 +8,13 @@
 namespace smath {
 
 	template<class T>
-	struct vec<1, T> {
+	class vec<1, T> {
+
+	private:
+
+		static SMATH_CONSTEXPR length_t m_size{ 1 };
+
+	public:
 
 		// -- Components --
 
@@ -17,8 +23,8 @@ namespace smath {
 		/**
 		 * @returns The number of components that the vector contains.
 		 */
-		static SMATH_CONSTEXPR int size() {
-			return 1;
+		static SMATH_CONSTEXPR length_t size() {
+			return m_size;
 		}
 
 		// -- Constructors --

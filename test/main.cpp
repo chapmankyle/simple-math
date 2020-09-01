@@ -43,7 +43,6 @@ void test_abs() {
 
 	SMATH_STATIC_ASSERT(smath::abs(-9.2f) == std::abs(-9.2f), "Failed abs(-9.2f)");
 	SMATH_STATIC_ASSERT(smath::abs(3.9) == std::abs(3.9), "Failed abs(3.9)");
-	SMATH_STATIC_ASSERT(smath::abs(17) == std::abs(17), "Failed abs(17)");
 
 	std::cout << "Passed\n\n";
 }
