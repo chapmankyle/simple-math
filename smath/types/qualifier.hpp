@@ -31,8 +31,8 @@ namespace smath {
 	// ----------------
 
 	// Supports:
-	// - N x N, where N = [2, 4]
-	// - M x N, where M = [2, 4] and N = [2,4]
+	// - N x N, where N in range [2, 4]
+	// - M x N, where M and N in range [2, 4]
 
 	/**
 	 * General matrix class of arbitrary number of rows, columns and type.
