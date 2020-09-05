@@ -345,6 +345,18 @@ void test_vec4() {
 }
 
 /**
+ * Test my implementation of matrix with 2 rows and 2 columns.
+ */
+void test_mat2x2() {
+	std::cout << "\033[32m-- smath::mat2x2 --\033[0m\n";
+
+	smath::mat2 A{ 12.2f };
+	std::cout << A << '\n';
+
+	std::cout << "Passed\n\n";
+}
+
+/**
  * Test the differences between the constants
  */
 void test_consts() {
@@ -376,6 +388,7 @@ int main() {
 	test_vec2();
 	test_vec3();
 	test_vec4();
+	test_mat2x2();
 	test_consts();
 
 	return 0;
