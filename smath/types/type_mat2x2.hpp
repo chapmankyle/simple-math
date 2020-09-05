@@ -43,14 +43,30 @@ namespace smath {
 
 		// -- Constructors --
 
+		/**
+		 * @brief Default constructor to zero-initialize a matrix.
+		 */
 		SMATH_CONSTEXPR mat();
 
-		template<>
+		/**
+		 * @brief Initialize a matrix to the content of another matrix.
+		 * @param m The matrix to initialize to.
+		 */
 		SMATH_CONSTEXPR mat(const mat<2, 2, T> &m);
 
+		/**
+		 * @brief Initialize each value in matrix to a scalar value.
+		 * @param scalar The scalar to initialize the matrix contents to.
+		 */
 		explicit SMATH_CONSTEXPR mat(T scalar);
+
 		SMATH_CONSTEXPR mat(const T &x1, const T &y1, const T &x2, const T &y2);
-		SMATH_CONSTEXPR mat(const row_t &v1, const row_t &v2);
+		SMATH_CONSTEXPR mat(const row_t &r1, const row_t &r2);
+
+		template<class A, class B, class C, class D>
+		SMATH_CONSTEXPR mat(const A &x1, const B &y1, const C &x2, const D &y2);
+		template<class A, class B>
+		SMATH_CONSTEXPR mat(const vec<2, A> &x1, const vec<2, B> &y1);
 
 		// -- Element accesses --
 
@@ -58,6 +74,13 @@ namespace smath {
 		SMATH_CONSTEXPR const row_t& operator[](length_t i) const;
 
 	};
+
+	// -- Output stream --
+
+	template<class T>
+	SMATH_CONSTEXPR std::ostream& operator<<(std::ostream &out, const mat<2, 2, T> &m);
 }
+
+#include "type_mat2x2.inl"
 
 #endif // TYPE_MAT2x2_H
