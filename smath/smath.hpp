@@ -8,6 +8,7 @@
 #include "constants.hpp"
 #include "exponential.hpp"
 #include "math.hpp"
+#include "matrix.hpp"
 #include "template_types.hpp"
 #include "trigonometry.hpp"
 #include "vec.hpp"
