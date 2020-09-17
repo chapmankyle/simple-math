@@ -86,24 +86,75 @@ namespace smath {
 
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator=(const mat<2, 2, A> &m);
+
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator+=(A scalar);
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator+=(const mat<2, 2, A> &m);
+
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator-=(A scalar);
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator-=(const mat<2, 2, A> &m);
+
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator*=(A scalar);
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator*=(const mat<2, 2, A> &m);
+
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator/=(A scalar);
 		template<class A>
 		SMATH_CONSTEXPR mat<2, 2, T>& operator/=(const mat<2, 2, A> &m);
 
+		// -- Unary bit operators --
+
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator%=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator%=(const mat<2, 2, A> &m);
+
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator&=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator&=(const mat<2, 2, A> &m);
+
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator|=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator|=(const mat<2, 2, A> &m);
+
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator^=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator^=(const mat<2, 2, A> &m);
+
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator<<=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator<<=(const mat<2, 2, A> &m);
+
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator>>=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator>>=(const mat<2, 2, A> &m);
+
+		// -- Increment and decrement operators --
+
+		SMATH_CONSTEXPR mat<2, 2, T>& operator++();
+		SMATH_CONSTEXPR mat<2, 2, T> operator++(int);
+
+		SMATH_CONSTEXPR mat<2, 2, T>& operator--();
+		SMATH_CONSTEXPR mat<2, 2, T> operator--(int);
+
 	};
+
+	// -- Boolean operators --
+
+	template<class T>
+	SMATH_CONSTEXPR bool operator==(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2);
+	template<class T>
+	SMATH_CONSTEXPR bool operator!=(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2);
 
 	// -- Output stream --
 

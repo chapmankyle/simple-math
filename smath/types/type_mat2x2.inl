@@ -137,6 +137,148 @@ namespace smath {
 		return *this;
 	}
 
+	// -- Unary bit operators --
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator%=(A scalar) {
+		this->values[0] %= static_cast<T>(scalar);
+		this->values[1] %= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator%=(const mat<2, 2, A> &m) {
+		this->values[0] %= m[0];
+		this->values[1] %= m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator&=(A scalar) {
+		this->values[0] &= static_cast<T>(scalar);
+		this->values[1] &= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator&=(const mat<2, 2, A> &m) {
+		this->values[0] &= m[0];
+		this->values[1] &= m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator|=(A scalar) {
+		this->values[0] |= static_cast<T>(scalar);
+		this->values[1] |= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator|=(const mat<2, 2, A> &m) {
+		this->values[0] |= m[0];
+		this->values[1] |= m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator^=(A scalar) {
+		this->values[0] ^= static_cast<T>(scalar);
+		this->values[1] ^= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator^=(const mat<2, 2, A> &m) {
+		this->values[0] ^= m[0];
+		this->values[1] ^= m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator<<=(A scalar) {
+		this->values[0] <<= static_cast<T>(scalar);
+		this->values[1] <<= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator<<=(const mat<2, 2, A> &m) {
+		this->values[0] <<= m[0];
+		this->values[1] <<= m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator>>=(A scalar) {
+		this->values[0] >>= static_cast<T>(scalar);
+		this->values[1] >>= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator>>=(const mat<2, 2, A> &m) {
+		this->values[0] >>= m[0];
+		this->values[1] >>= m[1];
+		return *this;
+	}
+
+	// -- Increment and decrement operators --
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator++() {
+		// allow for prefix (i.e. ++a)
+		++this->values[0];
+		++this->values[1];
+		return *this;
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> mat<2, 2, T>::operator++(int) {
+		// allow for postfix (i.e. a++)
+		mat<2, 2, T> copy(*this);
+		++*this;
+		return copy;
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator--() {
+		--this->values[0];
+		--this->values[1];
+		return *this;
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> mat<2, 2, T>::operator--(int) {
+		mat<2, 2, T> copy(*this);
+		--*this;
+		return copy;
+	}
+
+	// -- Boolean operators --
+
+	template<class T>
+	SMATH_CONSTEXPR bool operator==(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2) {
+		return (m1[0] == m2[0]) && (m1[1] == m2[1]);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR bool operator!=(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2) {
+		return (m1[0] != m2[0]) || (m1[1] != m2[1]);
+	}
+
 	// -- Output stream --
 
 	template<class T>
