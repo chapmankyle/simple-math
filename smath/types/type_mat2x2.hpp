@@ -149,6 +149,35 @@ namespace smath {
 
 	};
 
+	// -- Unary arithmetic operators --
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(const mat<2, 2, T> &m);
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(const mat<2, 2, T> &m);
+
+	// -- Binary arithmetic operators --
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(const mat<2, 2, T> &m, T scalar);
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(T scalar, const mat<2, 2, T> &m);
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2);
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(const mat<2, 2, T> &m, T scalar);
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(T scalar, const mat<2, 2, T> &m);
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2);
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator*(const mat<2, 2, T> &m, T scalar);
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator*(T scalar, const mat<2, 2, T> &m);
+
 	// -- Boolean operators --
 
 	template<class T>

@@ -267,6 +267,84 @@ namespace smath {
 		return copy;
 	}
 
+	// -- Unary arithmetic operators --
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(const mat<2, 2, T> &m) {
+		return m;
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(const mat<2, 2, T> &m) {
+		return mat<2, 2, T>(-m[0], -m[1]);
+	}
+
+	// -- Binary arithmetic operators --
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(const mat<2, 2, T> &m, T scalar) {
+		return mat<2, 2, T>(
+			m[0] + scalar,
+			m[1] + scalar
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(T scalar, const mat<2, 2, T> &m) {
+		return mat<2, 2, T>(
+			scalar + m[0],
+			scalar + m[1]
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator+(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2) {
+		return mat<2, 2, T>(
+			m1[0] + m2[0],
+			m1[1] + m2[1]
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(const mat<2, 2, T> &m, T scalar) {
+		return mat<2, 2, T>(
+			m[0] - scalar,
+			m[1] - scalar
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(T scalar, const mat<2, 2, T> &m) {
+		return mat<2, 2, T>(
+			scalar - m[0],
+			scalar - m[1]
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator-(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2) {
+		return mat<2, 2, T>(
+			m1[0] - m2[0],
+			m1[1] - m2[1]
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator*(const mat<2, 2, T> &m, T scalar) {
+		return mat<2, 2, T>(
+			m[0] * scalar,
+			m[1] * scalar
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator*(T scalar, const mat<2, 2, T> &m) {
+		return mat<2, 2, T>(
+			scalar * m[0],
+			scalar * m[1]
+		);
+	}
+
 	// -- Boolean operators --
 
 	template<class T>
