@@ -10,13 +10,14 @@ namespace smath {
 	template<class T>
 	class mat<2, 2, T> {
 
-	// Default class access specifier is private
+		// Default class access specifier is private
 
-	static SMATH_CONSTEXPR length_t m_rows{ 2 };
-	static SMATH_CONSTEXPR length_t m_cols{ 2 };
-	static SMATH_CONSTEXPR length_t m_length{ m_cols };
+		static SMATH_CONSTEXPR length_t m_rows{ 2 };
+		static SMATH_CONSTEXPR length_t m_cols{ 2 };
+		static SMATH_CONSTEXPR length_t m_length{ m_cols };
 
 	public:
+
 		// -- Useful type definitions --
 
 		using row_t    = vec<m_cols, T>;
@@ -55,6 +56,14 @@ namespace smath {
 		SMATH_CONSTEXPR mat(const mat<2, 2, T> &m);
 
 		/**
+		 * @brief Initialize a matrix to the content of another matrix.
+		 * @tparam A The type of the matrix given.
+		 * @param m The matrix to initialize to.
+		 */
+		template<class A>
+		SMATH_CONSTEXPR mat(const mat<2, 2, A> &m);
+
+		/**
 		 * @brief Initialize each value in matrix to a scalar value.
 		 * @param scalar The scalar to initialize the matrix contents to.
 		 */
@@ -66,12 +75,33 @@ namespace smath {
 		template<class A, class B, class C, class D>
 		SMATH_CONSTEXPR mat(const A &x1, const B &y1, const C &x2, const D &y2);
 		template<class A, class B>
-		SMATH_CONSTEXPR mat(const vec<2, A> &x1, const vec<2, B> &y1);
+		SMATH_CONSTEXPR mat(const vec<2, A> &r1, const vec<2, B> &r2);
 
 		// -- Element accesses --
 
 		SMATH_CONSTEXPR row_t& operator[](length_t i);
 		SMATH_CONSTEXPR const row_t& operator[](length_t i) const;
+
+		// -- Unary arithmetic operators --
+
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator=(const mat<2, 2, A> &m);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator+=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator+=(const mat<2, 2, A> &m);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator-=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator-=(const mat<2, 2, A> &m);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator*=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator*=(const mat<2, 2, A> &m);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator/=(A scalar);
+		template<class A>
+		SMATH_CONSTEXPR mat<2, 2, T>& operator/=(const mat<2, 2, A> &m);
 
 	};
 

@@ -17,8 +17,36 @@ namespace smath {
 	{}
 
 	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>::mat(const mat<2, 2, A> &m)
+		: values{ row_t(m[0]), row_t(m[1]) }
+	{}
+
+	template<class T>
 	SMATH_CONSTEXPR mat<2, 2, T>::mat(T scalar)
-		: values{ row_t(scalar, scalar), row_t(scalar, scalar) }
+		: values{ row_t(scalar, 0), row_t(0, scalar) }
+	{}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T>::mat(const T &x1, const T &y1, const T &x2, const T &y2)
+		: values{ row_t(x1, y1), row_t(x2, y2) }
+	{}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T>::mat(const row_t &r1, const row_t &r2)
+		: values{ r1, r2 }
+	{}
+
+	template<class T>
+	template<class A, class B, class C, class D>
+	SMATH_CONSTEXPR mat<2, 2, T>::mat(const A &x1, const B &y1, const C &x2, const D &y2)
+		: values{ row_t(static_cast<T>(x1), static_cast<T>(y1)), row_t(static_cast<T>(x2), static_cast<T>(y2)) }
+	{}
+
+	template<class T>
+	template<class A, class B>
+	SMATH_CONSTEXPR mat<2, 2, T>::mat(const vec<2, A> &r1, const vec<2, B> &r2)
+		: values{ row_t(r1), row_t(r2) }
 	{}
 
 	// -- Element accesses --
@@ -33,6 +61,80 @@ namespace smath {
 	SMATH_CONSTEXPR const typename mat<2, 2, T>::row_t& mat<2, 2, T>::operator[](length_t i) const {
 		assert(i < this->m_rows);
 		return this->values[i];
+	}
+
+	// -- Unary arithmetic operators --
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator=(const mat<2, 2, A> &m) {
+		this->values[0] = m[0];
+		this->values[1] = m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator+=(A scalar) {
+		this->values[0] += static_cast<T>(scalar);
+		this->values[1] += static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator+=(const mat<2, 2, A> &m) {
+		this->values[0] += m[0];
+		this->values[1] += m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator-=(A scalar) {
+		this->values[0] -= static_cast<T>(scalar);
+		this->values[1] -= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator-=(const mat<2, 2, A> &m) {
+		this->values[0] -= m[0];
+		this->values[1] -= m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator*=(A scalar) {
+		this->values[0] *= static_cast<T>(scalar);
+		this->values[1] *= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator*=(const mat<2, 2, A> &m) {
+		this->values[0] *= m[0];
+		this->values[1] *= m[1];
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator/=(A scalar) {
+		this->values[0] /= static_cast<T>(scalar);
+		this->values[1] /= static_cast<T>(scalar);
+		return *this;
+	}
+
+	template<class T>
+	template<class A>
+	SMATH_CONSTEXPR mat<2, 2, T>& mat<2, 2, T>::operator/=(const mat<2, 2, A> &m) {
+		this->values[0] /= m[0];
+		this->values[1] /= m[1];
+		return *this;
 	}
 
 	// -- Output stream --
