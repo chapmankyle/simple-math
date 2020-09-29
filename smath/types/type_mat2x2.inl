@@ -345,6 +345,54 @@ namespace smath {
 		);
 	}
 
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator*(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2) {
+		return mat<2, 2, T>(
+			m1[0][0] * m2[0][0] + m1[0][1] * m2[1][0],
+			m1[0][0] * m2[0][1] + m1[0][1] * m2[1][1],
+			m1[1][0] * m2[0][0] + m1[1][1] * m2[1][0],
+			m1[1][0] * m2[0][1] + m1[1][1] * m2[1][1]
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR typename mat<2, 2, T>::col_t operator*(
+		const mat<2, 2, T> &m,
+		const typename mat<2, 2, T>::col_t &v
+	) {
+		return vec<2, T>(
+			m[0][0] * v.x + m[0][1] * v.y,
+			m[1][0] * v.x + m[1][1] * v.y
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR typename mat<2, 2, T>::row_t operator*(
+		const typename mat<2, 2, T>::row_t &v,
+		const mat<2, 2, T> &m
+	) {
+		return vec<2, T>(
+			v.x * m[0][0] + v.y * m[1][0],
+			v.x * m[0][1] + v.y * m[1][1]
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator/(const mat<2, 2, T> &m, T scalar) {
+		return mat<2, 2, T>(
+			m[0] / scalar,
+			m[1] / scalar
+		);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator/(T scalar, const mat<2, 2, T> &m) {
+		return mat<2, 2, T>(
+			scalar / m[0],
+			scalar / m[1]
+		);
+	}
+
 	// -- Boolean operators --
 
 	template<class T>

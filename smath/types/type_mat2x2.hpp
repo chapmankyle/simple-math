@@ -177,6 +177,24 @@ namespace smath {
 	SMATH_CONSTEXPR mat<2, 2, T> operator*(const mat<2, 2, T> &m, T scalar);
 	template<class T>
 	SMATH_CONSTEXPR mat<2, 2, T> operator*(T scalar, const mat<2, 2, T> &m);
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator*(const mat<2, 2, T> &m1, const mat<2, 2, T> &m2);
+
+	template<class T>
+	SMATH_CONSTEXPR typename mat<2, 2, T>::col_t operator*(
+		const mat<2, 2, T> &m,
+		const typename mat<2, 2, T>::col_t &v
+	);
+	template<class T>
+	SMATH_CONSTEXPR typename mat<2, 2, T>::row_t operator*(
+		const typename mat<2, 2, T>::row_t &v,
+		const mat<2, 2, T> &m
+	);
+
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator/(const mat<2, 2, T> &m, T scalar);
+	template<class T>
+	SMATH_CONSTEXPR mat<2, 2, T> operator/(T scalar, const mat<2, 2, T> &m);
 
 	// -- Boolean operators --
 
