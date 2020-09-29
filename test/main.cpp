@@ -3,49 +3,9 @@
 
 #include "smath/smath.hpp"
 
-/**
- * Test the smath::max function against std::max
- */
-void test_max() {
-	std::cout << "\033[32m-- smath::max --\033[0m\n";
-
-	SMATH_STATIC_ASSERT(smath::max(3, 5) == std::max(3, 5), "Failed max(3, 5)");
-	SMATH_STATIC_ASSERT(smath::max(8.4f, 5.2f) == std::max(8.4f, 5.2f), "Failed max(8.4f, 5.2f)");
-
-	SMATH_STATIC_ASSERT(smath::max('a', 'z') == std::max('a', 'z'), "Failed max('a', 'z')");
-	SMATH_STATIC_ASSERT(smath::max('A', 'Z') == std::max('A', 'Z'), "Failed max('A', 'Z')");
-	SMATH_STATIC_ASSERT(smath::max('A', 'z') == std::max('A', 'z'), "Failed max('A', 'z')");
-
-	std::cout << "Passed\n\n";
-}
-
-/**
- * Test the smath::min function against std::min
- */
-void test_min() {
-	std::cout << "\033[32m-- smath::min --\033[0m\n";
-
-	SMATH_STATIC_ASSERT(smath::min(3, 5) == std::min(3, 5), "Failed min(3, 5");
-	SMATH_STATIC_ASSERT(smath::min(8.4f, 5.2f) == std::min(8.4f, 5.2f), "Failed min(8.4f, 5.2f)");
-
-	SMATH_STATIC_ASSERT(smath::min('a', 'z') == std::min('a', 'z'), "Failed min('a', 'z')");
-	SMATH_STATIC_ASSERT(smath::min('A', 'Z') == std::min('A', 'Z'), "Failed min('A', 'Z')");
-	SMATH_STATIC_ASSERT(smath::min('A', 'z') == std::min('A', 'z'), "Failed min('A', 'z')");
-
-	std::cout << "Passed\n\n";
-}
-
-/**
- * Test the smath::abs function against std::abs
- */
-void test_abs() {
-	std::cout << "\033[32m-- smath::abs --\033[0m\n";
-
-	SMATH_STATIC_ASSERT(smath::abs(-9.2f) == std::abs(-9.2f), "Failed abs(-9.2f)");
-	SMATH_STATIC_ASSERT(smath::abs(3.9) == std::abs(3.9), "Failed abs(3.9)");
-
-	std::cout << "Passed\n\n";
-}
+#include "common/min.hpp"
+#include "common/max.hpp"
+#include "common/abs.hpp"
 
 /**
  * Test the smath::sqrt function against std::sqrt
@@ -374,10 +334,11 @@ void test_consts() {
 int main() {
 
 	std::cout << '\n';
+	int errors = 0;
 
-	test_max();
-	test_min();
-	test_abs();
+	errors += test::Abs::run();
+	errors += test::Min::run();
+	errors += test::Max::run();
 	test_sqrt();
 	test_round();
 	test_floor();
@@ -391,5 +352,5 @@ int main() {
 	test_mat2x2();
 	test_consts();
 
-	return 0;
+	return errors;
 }
