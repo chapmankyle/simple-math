@@ -6,6 +6,7 @@ jobs:
       - image: gcc:9
     steps:
       - checkout
+      - run: apt-get update
       - run: apt-get install build-essential
       - run: mkdir -p bin
       - run: make
