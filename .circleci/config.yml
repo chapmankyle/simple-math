@@ -1,0 +1,19 @@
+version: 2.0
+
+jobs:
+  build:
+    docker:
+      - image: gcc:9
+    steps:
+      - checkout
+      - run: apt-get update
+      - run: apt-get install build-essential
+      - run: mkdir -p bin
+      - run: make
+      - run: ./main
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
