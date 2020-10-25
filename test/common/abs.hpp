@@ -73,43 +73,9 @@ namespace test {
 		}
 
 		/**
-		 * @brief Test with 1-dimensional vector inputs (float).
+		 * @brief Test with 1-dimensional vector inputs.
 		 */
-		static int vec1float() {
-			int errors = 0;
-
-			errors += (smath::abs(smath::vec1(-2.2f)) == smath::vec1(smath::abs(-2.2f)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1(2.2f)) == smath::vec1(smath::abs(2.2f)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1(-14.8302f)) == smath::vec1(smath::abs(-14.8302f)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1(942.91484f)) == smath::vec1(smath::abs(942.91484f)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1(0.0f)) == smath::vec1(smath::abs(0.0f)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1(-0.0f)) == smath::vec1(smath::abs(-0.0f)) ? 0 : 1);
-
-			std::cout << "[vec1]     : " << RESULT(errors) << '\n';
-			return errors;
-		}
-
-		/**
-		 * @brief Test with 1-dimensional vector inputs (double).
-		 */
-		static int vec1double() {
-			int errors = 0;
-
-			errors += (smath::abs(smath::vec1d(-2.2)) == smath::vec1d(smath::abs(-2.2)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1d(2.2)) == smath::vec1d(smath::abs(2.2)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1d(-14.8302)) == smath::vec1d(smath::abs(-14.8302)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1d(942.91484)) == smath::vec1d(smath::abs(942.91484)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1d(0.0)) == smath::vec1d(smath::abs(0.0)) ? 0 : 1);
-			errors += (smath::abs(smath::vec1d(-0.0)) == smath::vec1d(smath::abs(-0.0)) ? 0 : 1);
-
-			std::cout << "[vec1d]    : " << RESULT(errors) << '\n';
-			return errors;
-		}
-
-		/**
-		 * @brief Test with 1-dimensional vector inputs (int).
-		 */
-		static int vec1int() {
+		static int vec1() {
 			int errors = 0;
 
 			errors += (smath::abs(smath::vec1i(-2)) == smath::vec1i(smath::abs(-2)) ? 0 : 1);
@@ -119,7 +85,21 @@ namespace test {
 			errors += (smath::abs(smath::vec1i(0)) == smath::vec1i(smath::abs(0)) ? 0 : 1);
 			errors += (smath::abs(smath::vec1i(-0)) == smath::vec1i(smath::abs(-0)) ? 0 : 1);
 
-			std::cout << "[vec1i]    : " << RESULT(errors) << '\n';
+			errors += (smath::abs(smath::vec1d(-2.2)) == smath::vec1d(smath::abs(-2.2)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1d(2.2)) == smath::vec1d(smath::abs(2.2)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1d(-14.8302)) == smath::vec1d(smath::abs(-14.8302)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1d(942.91484)) == smath::vec1d(smath::abs(942.91484)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1d(0.0)) == smath::vec1d(smath::abs(0.0)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1d(-0.0)) == smath::vec1d(smath::abs(-0.0)) ? 0 : 1);
+
+			errors += (smath::abs(smath::vec1(-2.2f)) == smath::vec1(smath::abs(-2.2f)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1(2.2f)) == smath::vec1(smath::abs(2.2f)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1(-14.8302f)) == smath::vec1(smath::abs(-14.8302f)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1(942.91484f)) == smath::vec1(smath::abs(942.91484f)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1(0.0f)) == smath::vec1(smath::abs(0.0f)) ? 0 : 1);
+			errors += (smath::abs(smath::vec1(-0.0f)) == smath::vec1(smath::abs(-0.0f)) ? 0 : 1);
+
+			std::cout << "[vec1]     : " << RESULT(errors) << '\n';
 			return errors;
 		}
 
@@ -136,9 +116,7 @@ namespace test {
 			errors += integers();
 			errors += floats();
 			errors += doubles();
-			errors += vec1float();
-			errors += vec1double();
-			errors += vec1int();
+			errors += vec1();
 
 			std::cout << '\n';
 			return errors;
