@@ -473,8 +473,28 @@ namespace smath {
 	}
 
 	template<class T>
+	SMATH_CONSTEXPR bool operator==(const T scalar, const vec<1, T> &v) {
+		return scalar == v.x;
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR bool operator==(const vec<1, T> &v, const T scalar) {
+		return v.x == scalar;
+	}
+
+	template<class T>
 	SMATH_CONSTEXPR bool operator!=(const vec<1, T> &v1, const vec<1, T> &v2) {
 		return !(v1 == v2);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR bool operator!=(const T scalar, const vec<1, T> &v) {
+		return !(scalar == v.x);
+	}
+
+	template<class T>
+	SMATH_CONSTEXPR bool operator!=(const vec<1, T> &v, const T scalar) {
+		return !(v.x == scalar);
 	}
 
 	SMATH_CONSTEXPR vec<1, bool> operator&&(const vec<1, bool> &v1, const vec<1, bool> &v2) {
