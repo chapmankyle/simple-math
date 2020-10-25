@@ -6,27 +6,7 @@
 #include "common/min.hpp"
 #include "common/max.hpp"
 #include "common/abs.hpp"
-
-/**
- * Test the smath::sqrt function against std::sqrt
- */
-void test_sqrt() {
-	std::cout << "\033[32m-- smath::sqrt --\033[0m\n";
-
-	assert(smath::sqrt(smath::vec1(4)) == smath::vec1(std::sqrt(4)) && "Failed sqrt of vec1(4)");
-	assert(smath::sqrt(smath::vec1(4.0)) == smath::vec1(std::sqrt(4.0)) && "Failed sqrt of vec1(4.0)");
-	assert(smath::sqrt(smath::vec1(4.0f)) == smath::vec1(std::sqrt(4.0f)) && "Failed sqrt of vec1(4.0f)");
-
-	assert(smath::sqrt(smath::vec2(4, 16)) == smath::vec2(std::sqrt(4), std::sqrt(16)) && "Failed sqrt of vec2(4,16)");
-	assert(smath::sqrt(smath::vec2(4.0, 16.0)) == smath::vec2(std::sqrt(4.0), std::sqrt(16.0)) && "Failed sqrt of vec2(4.0,16.0)");
-	assert(smath::sqrt(smath::vec2(4.0f, 16.0f)) == smath::vec2(std::sqrt(4.0f), std::sqrt(16.0f)) && "Failed sqrt of vec2(4.0f,16.0f)");
-
-	assert(smath::sqrt(smath::vec3(4, 16, 12)) == smath::vec3(std::sqrt(4), std::sqrt(16), std::sqrt(12)) && "Failed sqrt of vec3(4,16,12)");
-	assert(smath::sqrt(smath::vec3(4.0, 16.0, 12.0)) == smath::vec3(std::sqrt(4.0), std::sqrt(16.0), std::sqrt(12.0)) && "Failed sqrt of vec3(4.0,16.0,12.0)");
-	assert(smath::sqrt(smath::vec3(4.0f, 16.0f, 12.0f)) == smath::vec3(std::sqrt(4.0f), std::sqrt(16.0f), std::sqrt(12.0f)) && "Failed sqrt of vec3(4.0f,16.0f,12.0f)");
-
-	std::cout << "Passed\n\n";
-}
+#include "common/square_root.hpp"
 
 /**
  * Test the smath::round function against std::round
@@ -86,8 +66,8 @@ void test_convert_radians_degrees() {
 	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(90.f)) == 90, "Failed degrees(radians(90.f))");
 	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(45.f)) == 45, "Failed degrees(radians(45.f))");
 
-	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(smath::vec1(180.f))) == smath::vec1(smath::degrees(smath::radians(180.f))), "Failed degrees(vec1)");
-	SMATH_STATIC_ASSERT(smath::degrees(smath::radians(smath::vec1(90.f))) == smath::vec1(smath::degrees(smath::radians(90.f))), "Failed degrees(vec1)");
+	assert(smath::degrees(smath::radians(smath::vec1(180.f))) == smath::vec1(smath::degrees(smath::radians(180.f))) && "Failed degrees(vec1)");
+	assert(smath::degrees(smath::radians(smath::vec1(90.f))) == smath::vec1(smath::degrees(smath::radians(90.f))) && "Failed degrees(vec1)");
 
 	std::cout << "Passed\n\n";
 }
@@ -339,7 +319,7 @@ int main() {
 	errors += test::Abs::run();
 	errors += test::Min::run();
 	errors += test::Max::run();
-	test_sqrt();
+	errors += test::Sqrt::run();
 	test_round();
 	test_floor();
 	test_ceil();
