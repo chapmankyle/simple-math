@@ -63,7 +63,7 @@ namespace smath {
 	 * @returns The square root of the floating-point input number.
 	 */
 	template<class T>
-	SMATH_INLINE SMATH_CONSTEXPR const T sqrt(const T &a) {
+	SMATH_INLINE SMATH_CONSTEXPR double sqrt(const T &a) {
 		return ::std::sqrt(a);
 	}
 
